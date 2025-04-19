@@ -100,13 +100,19 @@ app.get('/sign-up', (req, res) => {
   });
 });
 
-app.get('/med-reminder', (req, res) => {
-  res.render('med-reminder', { 
-    title: 'Med Reminder | ResQ',
-    page: 'med-reminder'
+  app.get('/med-reminder', (req, res) => {
+    res.render('med-reminder', { 
+      title: 'Med Reminder | ResQ',
+      page: 'med-reminder'
+    });
   });
-});
 
+  app.get('/appointment', (req, res) => {
+    res.render('appointment', { 
+      title: 'Appointment | ResQ',
+      page: 'appointment'
+    });
+  });
 // Route directly to the auth routes for the logout page
 app.get('/logout', (req, res) => {
   req.session.destroy((err) => {
@@ -120,9 +126,13 @@ app.get('/logout', (req, res) => {
 // Add API routes
 const reminderRoutes = require('./server/routes/reminderRoutes');
 const authRoutes = require('./server/routes/authRoutes');
+const appointmentRoutes = require('./server/routes/appointmentRoutes');
+const medicationRoutes = require('./server/routes/medicationRoutes');
 
 app.use('/api/reminders', reminderRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/appointments', appointmentRoutes);
+app.use('/api/medications', medicationRoutes);
 
 // Server setup
 const PORT = process.env.PORT || 3000;

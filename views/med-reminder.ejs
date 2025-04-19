@@ -1,0 +1,473 @@
+<div class="page-wrapper">
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <!--Medicine Reminder Page Start-->
+    <section class="appoinment-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="appoinment-page__left">
+                        <h3 class="appoinment-page__title">Medication Reminder</h3>
+                        <p class="mb-4">Add your medications to receive timely reminders about when to take them.</p>
+                        
+                        <form class="contact-form-validated appoinment-page__form" id="medicationForm">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="medicationName" placeholder="Medication Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="dosage" placeholder="Dosage (e.g., 10mg, 1 tablet)" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <select name="frequency" required id="frequencySelect">
+                                            <option value="" disabled selected>How often?</option>
+                                            <option value="Once daily">Once daily</option>
+                                            <option value="Twice daily">Twice daily</option>
+                                            <option value="Three times daily">Three times daily</option>
+                                            <option value="Four times daily">Four times daily</option>
+                                            <option value="Every other day">Every other day</option>
+                                            <option value="Weekly">Weekly</option>
+                                            <option value="As needed">As needed</option>
+                                            <option value="Custom">Custom</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12" id="timeFieldsContainer">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="mt-3 mb-3 dose-times-heading">Medication Time(s)</h5>
+                                        </div>
+                                        
+                                        <div class="col-12" id="timesContainer">
+                                            <!-- First time field (always visible) -->
+                                            <div class="row time-field-row mb-3">
+                                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                                    <div class="appoinment-page__input-box">
+                                                        <label class="mb-2">Time to take</label>
+                                                        <input type="time" name="medicationTimes[]" class="medication-time" required value="08:00">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-2 col-lg-2 col-md-2 d-flex align-items-end">
+                                                    <button type="button" class="btn btn-sm add-time-btn" style="background-color: #006D77; color: white; margin-bottom: 10px;">
+                                                        <i class="fa fa-plus"></i> Add Time
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" placeholder="Start Date (mm/dd/yyyy)" name="startDate" id="startDatepicker" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" placeholder="End Date (optional)" name="endDate" id="endDatepicker">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="prescribedBy" placeholder="Prescribed by (Doctor's Name)">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box text-message-box">
+                                        <textarea name="instructions" placeholder="Special instructions (e.g., take with food, avoid dairy)"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <h4 class="mt-3 mb-3">Reminder Preferences</h4>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="1" id="reminderAtTime" name="reminderAtTime" checked>
+                                        <label class="form-check-label" for="reminderAtTime">
+                                            Remind me at the scheduled time
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="1" id="reminderBefore" name="reminderBefore" checked>
+                                        <label class="form-check-label" for="reminderBefore">
+                                            Remind me 15 minutes before
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__btn-box">
+                                        <button type="submit" class="thm-btn">Add Medication <span class="icon-plus"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="result mt-3"></div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="appoinment-page__right">
+                        <div class="appoinment-page__working-hour">
+                            <h3 class="appoinment-page__working-hour-title">My Medications</h3>
+                            <p class="appoinment-page__working-hour-text">Your medications and upcoming reminders</p>
+                            
+                            <!-- This section will be populated with medications from backend later -->
+                            <div class="no-medications-message text-center py-4">
+                                <i class="fa fa-pills fa-3x mb-3" style="color: #006D77;"></i>
+                                <p>No medications added yet</p>
+                                <p class="small">Your medications will appear here</p>
+                            </div>
+                            
+                            <!-- Example of how medications will look (to be replaced with dynamic data) -->
+                            <div class="upcoming-medications d-none">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lisinopril 10mg</h5>
+                                        <p class="card-text"><i class="fas fa-clock"></i> Once daily at 8:00 AM</p>
+                                        <p class="card-text"><i class="fas fa-calendar-alt"></i> Started on Jun 1, 2023</p>
+                                        <p class="card-text text-muted small"><i class="fas fa-info-circle"></i> Take with food</p>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#" class="card-link text-primary">Edit</a>
+                                            <a href="#" class="card-link text-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Metformin 500mg</h5>
+                                        <p class="card-text"><i class="fas fa-clock"></i> Twice daily at 9:00 AM, 9:00 PM</p>
+                                        <p class="card-text"><i class="fas fa-calendar-alt"></i> Started on May 15, 2023</p>
+                                        <p class="card-text text-muted small"><i class="fas fa-info-circle"></i> Take with meals</p>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#" class="card-link text-primary">Edit</a>
+                                            <a href="#" class="card-link text-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Medicine Reminder Page End-->
+</div>
+
+<script>
+    // Frontend validation and API interaction
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('medicationForm');
+        const frequencySelect = document.getElementById('frequencySelect');
+        const timesContainer = document.getElementById('timesContainer');
+        const medicationsContainer = document.querySelector('.upcoming-medications');
+        const noMedicationsMessage = document.querySelector('.no-medications-message');
+        
+        // Initialize date pickers if jQuery UI is available
+        if($.fn.datepicker) {
+            $('#startDatepicker, #endDatepicker').datepicker({
+                dateFormat: 'mm/dd/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        }
+        
+        // Format date for display
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+        
+        // Create medication card
+        function createMedicationCard(medication) {
+            // Format medication times for display
+            const times = medication.medicationTimes.join(', ');
+            
+            return `
+                <div class="card mb-3" data-id="${medication._id}">
+                    <div class="card-body">
+                        <h5 class="card-title">${medication.medicationName} ${medication.dosage}</h5>
+                        <p class="card-text"><i class="fas fa-clock"></i> ${medication.frequency} at ${times}</p>
+                        <p class="card-text"><i class="fas fa-calendar-alt"></i> Started on ${formatDate(medication.startDate)}</p>
+                        ${medication.instructions ? `<p class="card-text text-muted small"><i class="fas fa-info-circle"></i> ${medication.instructions}</p>` : ''}
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="card-link text-primary edit-medication" data-id="${medication._id}">Edit</a>
+                            <a href="#" class="card-link text-danger delete-medication" data-id="${medication._id}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Load all medications
+        function loadMedications() {
+            fetch('/api/medications', {
+                credentials: 'include' // Important for sending cookies/session data
+            })
+            .then(response => {
+                console.log('Load medications response status:', response.status);
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.message || 'Failed to fetch medications');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Medications data:', data);
+                if (data.success && data.data.length > 0) {
+                    // Clear existing content and hide no medications message
+                    medicationsContainer.innerHTML = '';
+                    noMedicationsMessage.style.display = 'none';
+                    medicationsContainer.style.display = 'block';
+                    medicationsContainer.classList.remove('d-none');
+                    
+                    // Add each medication
+                    data.data.forEach(medication => {
+                        medicationsContainer.innerHTML += createMedicationCard(medication);
+                    });
+                    
+                    // Add event listeners to delete buttons
+                    document.querySelectorAll('.delete-medication').forEach(button => {
+                        button.addEventListener('click', handleDeleteMedication);
+                    });
+                    
+                    // Add event listeners to edit buttons
+                    document.querySelectorAll('.edit-medication').forEach(button => {
+                        button.addEventListener('click', handleEditMedication);
+                    });
+                } else {
+                    // Show no medications message
+                    medicationsContainer.style.display = 'none';
+                    noMedicationsMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = `<div class="alert alert-danger">Error loading medications: ${error.message}</div>`;
+            });
+        }
+        
+        // Handle delete medication
+        function handleDeleteMedication(e) {
+            e.preventDefault();
+            const medicationId = this.getAttribute('data-id');
+            
+            if (confirm('Are you sure you want to delete this medication?')) {
+                fetch(`/api/medications/${medicationId}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to delete medication');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        // Remove the medication card from UI
+                        this.closest('.card').remove();
+                        
+                        // Check if there are any medications left
+                        if (medicationsContainer.children.length === 0) {
+                            medicationsContainer.style.display = 'none';
+                            noMedicationsMessage.style.display = 'block';
+                        }
+                        
+                        // Show success message
+                        const resultDiv = document.querySelector('.result');
+                        resultDiv.innerHTML = '<div class="alert alert-success">Medication deleted successfully!</div>';
+                        resultDiv.scrollIntoView({ behavior: 'smooth' });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const resultDiv = document.querySelector('.result');
+                    resultDiv.innerHTML = `<div class="alert alert-danger">Error deleting medication: ${error.message}</div>`;
+                });
+            }
+        }
+        
+        // Handle edit medication (simple alert for now)
+        function handleEditMedication(e) {
+            e.preventDefault();
+            alert('Edit feature coming soon!');
+        }
+        
+        // Add time field when the "+" button is clicked
+        document.querySelector('.add-time-btn').addEventListener('click', addTimeField);
+        
+        // Function to add a new time field
+        function addTimeField() {
+            const timeFieldRow = document.createElement('div');
+            timeFieldRow.className = 'row time-field-row mb-3';
+            timeFieldRow.innerHTML = `
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="appoinment-page__input-box">
+                        <label class="mb-2">Time to take</label>
+                        <input type="time" name="medicationTimes[]" class="medication-time" required>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 d-flex align-items-end">
+                    <button type="button" class="btn btn-sm remove-time-btn" style="background-color: #dc3545; color: white; margin-bottom: 10px;">
+                        <i class="fa fa-minus"></i> Remove
+                    </button>
+                </div>
+            `;
+            
+            timesContainer.appendChild(timeFieldRow);
+            
+            // Add event listener to remove button
+            timeFieldRow.querySelector('.remove-time-btn').addEventListener('click', function() {
+                timesContainer.removeChild(timeFieldRow);
+            });
+        }
+        
+        // Suggest times based on frequency
+        frequencySelect.addEventListener('change', function() {
+            const selectedValue = this.value;
+            
+            // Clear existing time fields except the first one
+            const timeFields = timesContainer.querySelectorAll('.time-field-row');
+            for (let i = timeFields.length - 1; i > 0; i--) {
+                timesContainer.removeChild(timeFields[i]);
+            }
+            
+            // Set first time field to 8 AM
+            const firstTimeField = timesContainer.querySelector('.medication-time');
+            firstTimeField.value = '08:00';
+            
+            // Add suggested times based on frequency
+            if (selectedValue === 'Twice daily') {
+                addTimeField();
+                const timeFields = timesContainer.querySelectorAll('.medication-time');
+                timeFields[1].value = '20:00'; // 8 PM
+            } 
+            else if (selectedValue === 'Three times daily') {
+                addTimeField();
+                addTimeField();
+                const timeFields = timesContainer.querySelectorAll('.medication-time');
+                timeFields[1].value = '14:00'; // 2 PM
+                timeFields[2].value = '20:00'; // 8 PM
+            }
+            else if (selectedValue === 'Four times daily') {
+                addTimeField();
+                addTimeField();
+                addTimeField();
+                const timeFields = timesContainer.querySelectorAll('.medication-time');
+                timeFields[1].value = '12:00'; // 12 PM
+                timeFields[2].value = '16:00'; // 4 PM
+                timeFields[3].value = '20:00'; // 8 PM
+            }
+        });
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create FormData object
+            const formData = new FormData(form);
+            
+            // Get all medication times as an array
+            const medicationTimes = Array.from(document.querySelectorAll('.medication-time')).map(input => input.value);
+            
+            // Convert FormData to JSON with proper date formatting
+            const medicationData = {};
+            formData.forEach((value, key) => {
+                // Skip the medicationTimes[] fields as we're handling them separately
+                if (key === 'medicationTimes[]') {
+                    return;
+                }
+                
+                if (key === 'startDate' || key === 'endDate') {
+                    // Ensure date is properly formatted (ISO string)
+                    if (value) {
+                        const dateParts = value.split('/');
+                        if (dateParts.length === 3) {
+                            const dateObj = new Date(dateParts[2], dateParts[0] - 1, dateParts[1]);
+                            medicationData[key] = dateObj.toISOString();
+                        } else {
+                            medicationData[key] = value;
+                        }
+                    }
+                } else {
+                    medicationData[key] = value;
+                }
+            });
+            
+            // Add the medication times array
+            medicationData.medicationTimes = medicationTimes;
+            
+            console.log('Sending medication data:', medicationData);
+            
+            // Send medication data to server
+            fetch('/api/medications', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(medicationData),
+                credentials: 'include' // Important for sending cookies/session data
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.message || 'Failed to save medication');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    const resultDiv = document.querySelector('.result');
+                    resultDiv.innerHTML = '<div class="alert alert-success">Medication added successfully! You will receive reminders according to your preferences.</div>';
+                    
+                    // Clear form
+                    form.reset();
+                    
+                    // Reset time fields to just one
+                    const timeFields = timesContainer.querySelectorAll('.time-field-row');
+                    for (let i = timeFields.length - 1; i > 0; i--) {
+                        timesContainer.removeChild(timeFields[i]);
+                    }
+                    
+                    // Reload medications
+                    loadMedications();
+                    
+                    // Scroll to message
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = `<div class="alert alert-danger">Error adding medication: ${error.message}</div>`;
+            });
+        });
+        
+        // Load medications when page loads
+        loadMedications();
+    });
+</script>

@@ -1,0 +1,337 @@
+<div class="page-wrapper">
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <!--Appointment Page Start-->
+    <section class="appoinment-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="appoinment-page__left">
+                        <h3 class="appoinment-page__title">Schedule Your Appointment</h3>
+                        <p class="mb-4">Fill in the details below to schedule your doctor appointment. You'll receive reminders before your scheduled time.</p>
+                        
+                        <form class="contact-form-validated appoinment-page__form" id="appointmentForm">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="doctorName" placeholder="Doctor's Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <select name="speciality" class="form-control" required>
+                                            <option value="" disabled selected>Select Speciality</option>
+                                            <option value="General Physician">General Physician</option>
+                                            <option value="Cardiologist">Cardiologist</option>
+                                            <option value="Dermatologist">Dermatologist</option>
+                                            <option value="Orthopedic">Orthopedic</option>
+                                            <option value="Neurologist">Neurologist</option>
+                                            <option value="Pediatrician">Pediatrician</option>
+                                            <option value="Gynecologist">Gynecologist</option>
+                                            <option value="Ophthalmologist">Ophthalmologist</option>
+                                            <option value="Dentist">Dentist</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" placeholder="mm/dd/yyyy" name="appointmentDate" id="datepicker" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="time" name="appointmentTime" placeholder="Appointment Time" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="location" placeholder="Hospital/Clinic Location" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box text-message-box">
+                                        <textarea name="notes" placeholder="Additional notes about your appointment (symptoms, reason for visit, etc.)"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <h4 class="mt-3 mb-3">Reminder Preferences</h4>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="1" id="reminderDay" name="reminderDay" checked>
+                                        <label class="form-check-label" for="reminderDay">
+                                            Remind me 1 day before
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="1" id="reminderHour" name="reminderHour" checked>
+                                        <label class="form-check-label" for="reminderHour">
+                                            Remind me 1 hour before
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__btn-box">
+                                        <button type="submit" class="thm-btn">Save Appointment <span class="icon-plus"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="result mt-3"></div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="appoinment-page__right">
+                        <div class="appoinment-page__working-hour">
+                            <h3 class="appoinment-page__working-hour-title">My Upcoming Appointments</h3>
+                            <p class="appoinment-page__working-hour-text">Your upcoming medical appointments will appear here</p>
+                            
+                            <!-- This section will be populated with appointments from backend later -->
+                            <div class="no-appointments-message text-center py-4">
+                                <i class="fa fa-calendar-alt fa-3x mb-3" style="color: #006D77;"></i>
+                                <p>No upcoming appointments</p>
+                                <p class="small">Your scheduled appointments will appear here</p>
+                            </div>
+                            
+                            <!-- Example of how appointments will look (to be replaced with dynamic data) -->
+                            <div class="upcoming-appointment d-none">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dr. Sarah Johnson</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Cardiologist</h6>
+                                        <p class="card-text"><i class="far fa-calendar-alt"></i> June 15, 2023</p>
+                                        <p class="card-text"><i class="far fa-clock"></i> 10:30 AM</p>
+                                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> City Hospital, Wing B</p>
+                                        <a href="#" class="card-link text-danger">Cancel</a>
+                                        <a href="#" class="card-link text-primary">Reschedule</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Appointment Page End-->
+</div>
+
+<script>
+    // Frontend validation and API interaction
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('appointmentForm');
+        const appointmentsContainer = document.querySelector('.upcoming-appointment');
+        const noAppointmentsMessage = document.querySelector('.no-appointments-message');
+        
+        // Function to format date for display
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+        
+        // Function to format time for display
+        function formatTime(timeString) {
+            return timeString;
+        }
+        
+        // Function to create appointment card
+        function createAppointmentCard(appointment) {
+            return `
+                <div class="card mb-3" data-id="${appointment._id}">
+                    <div class="card-body">
+                        <h5 class="card-title">${appointment.doctorName}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${appointment.speciality}</h6>
+                        <p class="card-text"><i class="far fa-calendar-alt"></i> ${formatDate(appointment.appointmentDate)}</p>
+                        <p class="card-text"><i class="far fa-clock"></i> ${formatTime(appointment.appointmentTime)}</p>
+                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> ${appointment.location}</p>
+                        ${appointment.notes ? `<p class="card-text text-muted small">${appointment.notes}</p>` : ''}
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="#" class="card-link text-danger delete-appointment" data-id="${appointment._id}">Cancel</a>
+                            <a href="#" class="card-link text-primary edit-appointment" data-id="${appointment._id}">Reschedule</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Function to load all appointments
+        function loadAppointments() {
+            fetch('/api/appointments', {
+                credentials: 'include' // Important for sending cookies/session data
+            })
+            .then(response => {
+                console.log('Load appointments response status:', response.status);
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.message || 'Failed to fetch appointments');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Appointments data:', data);
+                if (data.success && data.data.length > 0) {
+                    // Clear existing content and hide no appointments message
+                    appointmentsContainer.innerHTML = '';
+                    noAppointmentsMessage.style.display = 'none';
+                    appointmentsContainer.style.display = 'block';
+                    appointmentsContainer.classList.remove('d-none');
+                    
+                    // Add each appointment
+                    data.data.forEach(appointment => {
+                        appointmentsContainer.innerHTML += createAppointmentCard(appointment);
+                    });
+                    
+                    // Add event listeners to delete buttons
+                    document.querySelectorAll('.delete-appointment').forEach(button => {
+                        button.addEventListener('click', handleDeleteAppointment);
+                    });
+                    
+                    // Add event listeners to edit buttons
+                    document.querySelectorAll('.edit-appointment').forEach(button => {
+                        button.addEventListener('click', handleEditAppointment);
+                    });
+                } else {
+                    // Show no appointments message
+                    appointmentsContainer.style.display = 'none';
+                    noAppointmentsMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = `<div class="alert alert-danger">Error loading appointments: ${error.message}</div>`;
+            });
+        }
+        
+        // Handle delete appointment
+        function handleDeleteAppointment(e) {
+            e.preventDefault();
+            const appointmentId = this.getAttribute('data-id');
+            
+            if (confirm('Are you sure you want to cancel this appointment?')) {
+                fetch(`/api/appointments/${appointmentId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to delete appointment');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        // Remove the appointment card from UI
+                        this.closest('.card').remove();
+                        
+                        // Check if there are any appointments left
+                        if (appointmentsContainer.children.length === 0) {
+                            appointmentsContainer.style.display = 'none';
+                            noAppointmentsMessage.style.display = 'block';
+                        }
+                        
+                        // Show success message
+                        const resultDiv = document.querySelector('.result');
+                        resultDiv.innerHTML = '<div class="alert alert-success">Appointment cancelled successfully!</div>';
+                        resultDiv.scrollIntoView({ behavior: 'smooth' });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const resultDiv = document.querySelector('.result');
+                    resultDiv.innerHTML = `<div class="alert alert-danger">Error cancelling appointment: ${error.message}</div>`;
+                });
+            }
+        }
+        
+        // Handle edit appointment (we'll just redirect to edit page or populate form)
+        function handleEditAppointment(e) {
+            e.preventDefault();
+            // For now just show message that feature is coming soon
+            alert('Reschedule feature coming soon!');
+        }
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create FormData object
+            const formData = new FormData(form);
+            
+            // Convert FormData to JSON with proper date formatting
+            const appointmentData = {};
+            formData.forEach((value, key) => {
+                if (key === 'appointmentDate') {
+                    // Ensure date is properly formatted (ISO string)
+                    const dateParts = value.split('/');
+                    if (dateParts.length === 3) {
+                        const dateObj = new Date(dateParts[2], dateParts[0] - 1, dateParts[1]);
+                        appointmentData[key] = dateObj.toISOString();
+                    } else {
+                        appointmentData[key] = value;
+                    }
+                } else {
+                    appointmentData[key] = value;
+                }
+            });
+            
+            console.log('Sending appointment data:', appointmentData);
+            
+            // Send appointment data to server
+            fetch('/api/appointments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(appointmentData),
+                credentials: 'include' // Important for sending cookies/session data
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.message || 'Failed to save appointment');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    const resultDiv = document.querySelector('.result');
+                    resultDiv.innerHTML = '<div class="alert alert-success">Appointment scheduled successfully! Reminders will be sent according to your preferences.</div>';
+                    
+                    // Clear form
+                    form.reset();
+                    
+                    // Reload appointments
+                    loadAppointments();
+                    
+                    // Scroll to message
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = `<div class="alert alert-danger">Error scheduling appointment: ${error.message}</div>`;
+            });
+        });
+        
+        // Load appointments when page loads
+        loadAppointments();
+    });
+</script>
