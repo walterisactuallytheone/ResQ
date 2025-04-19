@@ -1,0 +1,146 @@
+/*==============================================
+    Newsletter One
+===============================================*/
+.newsletter-one {
+    position: relative;
+    display: block;
+    z-index: 2;
+}
+
+.newsletter-one__inner {
+    position: relative;
+    display: block;
+    background-color: var(--careon-primary);
+    box-shadow: 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.newsletter-one__img {
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    animation: leftRight 4s ease-in-out infinite;
+}
+
+.newsletter-one__img img {
+    width: auto;
+}
+
+.newsletter-one__inner-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 63px 325px 63px;
+    padding-right: 60px;
+    overflow: hidden;
+}
+
+.newsletter-one__shape-1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.newsletter-one__shape-1 img {
+    width: auto;
+}
+
+.newsletter-one__shape-2 {
+    position: absolute;
+    bottom: 0px;
+    right: 25px;
+    opacity: .10;
+    z-index: -1;
+}
+
+.newsletter-one__shape-2 img {
+    width: auto;
+}
+
+.newsletter-one__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.08em;
+    text-transform: capitalize;
+}
+
+.newsletter-one__form-box {
+    position: relative;
+    display: block;
+    max-width: 480px;
+    width: 100%;
+}
+
+.newsletter-one__form {
+    position: relative;
+    display: block;
+}
+
+.newsletter-one__input {
+    position: relative;
+    display: block;
+}
+
+.newsletter-one__input input[type="email"] {
+    font-size: 16px;
+    color: var(--careon-gray);
+    font-weight: 400;
+    height: 50px;
+    width: 100%;
+    background: rgba(var(--careon-white-rgb), .20);
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    padding: 0 25px 0;
+    padding-right: 170px;
+}
+
+.newsletter-one__form .thm-btn {
+    border: none;
+    padding: 17.5px 30px 17.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--careon-white);
+    color: var(--careon-black);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==============================================
+    End
+===============================================*/

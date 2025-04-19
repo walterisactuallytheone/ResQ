@@ -1,0 +1,318 @@
+/*==============================================
+    Feature One
+===============================================*/
+.feature-one {
+    position: relative;
+    display: block;
+    padding: 120px 0 0;
+    z-index: 1;
+}
+
+.feature-one__inner {
+    position: relative;
+    display: block;
+}
+
+.feature-one__feature-list {
+    position: relative;
+    display: block;
+}
+
+.feature-one__feature-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid var(--careon-bdr-color);
+    padding: 28px 38px 28px;
+    margin-bottom: 30px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.feature-one__feature-list li:hover {
+    border-radius: 10px;
+    border: 2px solid var(--careon-primary);
+}
+
+.feature-one__feature-list li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--careon-primary);
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+    transform-origin: bottom right;
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+    z-index: -1;
+}
+
+.feature-one__feature-list li:hover::before {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+    transform-origin: top center;
+}
+
+.feature-one__feature-list-left {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    max-width: 450px;
+    width: 100%;
+}
+
+.feature-one__feature-list-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.feature-one__feature-list-icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 46px;
+    color: var(--careon-black);
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.feature-one__feature-list li:hover .feature-one__feature-list-icon span {
+    transform: scale(0.9);
+}
+
+.feature-one__feature-list-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    text-transform: capitalize;
+}
+
+.feature-one__feature-list-title a {
+    color: var(--careon-black);
+}
+
+.feature-one__feature-list-title a:hover {
+    color: var(--careon-base);
+}
+
+.feature-one__feature-list-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 450px;
+    width: 100%;
+}
+
+.feature-one__feature-list-sub-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    text-transform: capitalize;
+    color: var(--careon-black);
+}
+
+.feature-one__feature-list-arrow {
+    position: relative;
+    display: inline-block;
+}
+
+.feature-one__feature-list-arrow a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: var(--careon-extra);
+    border-radius: 50%;
+    font-size: 24px;
+    color: var(--careon-black);
+}
+
+.feature-one__feature-list li:hover .feature-one__feature-list-arrow a {
+    background-color: var(--careon-white);
+}
+
+
+/*--------------------------------------------------------------
+# Feature Two
+--------------------------------------------------------------*/
+.feature-two {
+    position: relative;
+    display: block;
+    padding: 90px 0 0;
+    z-index: 1;
+}
+
+.feature-two__single {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.feature-two__single-1 {
+    background-color: var(--careon-white);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 42px 40px 35px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.feature-two__title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+.feature-two__text {
+    margin: 22px 0 30px;
+}
+
+.feature-two__btn-box {
+    position: relative;
+    display: block;
+}
+
+.feature-two__btn-box .thm-btn {
+    background-color: var(--careon-base);
+}
+
+.feature-two__btn-box .thm-btn::before,
+.feature-two__btn-box .thm-btn::after {
+    background-color: var(--careon-black);
+}
+
+.feature-two__single-one-img-1 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.feature-two__single-one-img-1 img {
+    width: auto;
+}
+
+.feature-two__img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.feature-two__img::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--careon-black);
+    opacity: 0;
+    transition: background-color 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.feature-two__single:hover .feature-two__img::before {
+    opacity: .50;
+}
+
+.feature-two__img img {
+    width: 100%;
+    border-radius: 10px;
+    transform: scale3d(1, 1, 1);
+    transition: transform 1s ease-in-out;
+}
+
+.feature-two__single:hover .feature-two__img img {
+    transform: scale(1.05) rotate(0deg);
+}
+
+
+.feature-two__single-2 {
+    overflow: hidden;
+    padding: 56px 40px 55px;
+    background-color: var(--careon-extra);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.feature-two__single-two-img-1 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.feature-two__single-two-img-1 img {
+    width: auto;
+}
+
+.feature-two__single-two-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.feature-two__single-two-icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 65px;
+    color: var(--careon-base);
+    -webkit-transition: all 0.90s ease;
+    -o-transition: all 0.90s ease;
+    transition: all 0.90s ease;
+}
+
+.feature-two__single-2:hover .feature-two__single-two-icon span {
+    transform: scale(.9) translateX(2px);
+}
+
+.feature-two__single-two-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34px;
+    margin: 28px 0 23px;
+}
+
+.feature-two__single-two-text {
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/

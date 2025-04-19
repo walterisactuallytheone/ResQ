@@ -1,0 +1,304 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon78ed.eot?orkqwr');
+  src: url('../fonts/icomoon78ed.eot?orkqwr#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon78ed.ttf?orkqwr') format('truetype'),
+    url('../fonts/icomoon78ed.woff?orkqwr') format('woff'),
+    url('../fonts/icomoon78ed.svg?orkqwr#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+
+.icon-medicine-2-2:before {
+  content: "\e943";
+}
+
+.icon-pills:before {
+  content: "\e900";
+}
+
+.icon-pills-2:before {
+  content: "\e901";
+}
+
+.icon-pills-3:before {
+  content: "\e902";
+}
+
+.icon-pin:before {
+  content: "\e903";
+}
+
+.icon-pinterest:before {
+  content: "\e904";
+}
+
+.icon-plaster:before {
+  content: "\e905";
+}
+
+.icon-play:before {
+  content: "\e906";
+}
+
+.icon-plus:before {
+  content: "\e907";
+}
+
+.icon-prev:before {
+  content: "\e908";
+}
+
+.icon-quaity-care:before {
+  content: "\e909";
+}
+
+.icon-quaity-care-2:before {
+  content: "\e90a";
+}
+
+.icon-quaity-care-3:before {
+  content: "\e90b";
+}
+
+.icon-quaity-care-4:before {
+  content: "\e90c";
+}
+
+.icon-quote:before {
+  content: "\e90d";
+}
+
+.icon-quote-2:before {
+  content: "\e90e";
+}
+
+.icon-right-arrow:before {
+  content: "\e90f";
+}
+
+.icon-search:before {
+  content: "\e910";
+}
+
+.icon-star:before {
+  content: "\e911";
+}
+
+.icon-teeth:before {
+  content: "\e912";
+}
+
+.icon-teeth-2:before {
+  content: "\e913";
+}
+
+.icon-teeth-3:before {
+  content: "\e914";
+}
+
+.icon-teeth-4:before {
+  content: "\e915";
+}
+
+.icon-teeth-5:before {
+  content: "\e916";
+}
+
+.icon-teeth-6:before {
+  content: "\e917";
+}
+
+.icon-teeth-7:before {
+  content: "\e918";
+}
+
+.icon-teeth-8:before {
+  content: "\e919";
+}
+
+.icon-teeth-9:before {
+  content: "\e91a";
+}
+
+.icon-teeth-10:before {
+  content: "\e91b";
+}
+
+.icon-teeth-11:before {
+  content: "\e91c";
+}
+
+.icon-teeth-12:before {
+  content: "\e91d";
+}
+
+.icon-tofi:before {
+  content: "\e91e";
+}
+
+.icon-toothache:before {
+  content: "\e91f";
+}
+
+.icon-twitter:before {
+  content: "\e920";
+}
+
+.icon-up-arrow:before {
+  content: "\e921";
+}
+
+.icon-user:before {
+  content: "\e922";
+}
+
+.icon-file:before {
+  content: "\e923";
+}
+
+.icon-hour:before {
+  content: "\e924";
+}
+
+.icon-inhelar:before {
+  content: "\e925";
+}
+
+.icon-injection:before {
+  content: "\e926";
+}
+
+.icon-injection-2:before {
+  content: "\e927";
+}
+
+.icon-instagram:before {
+  content: "\e928";
+}
+
+.icon-left-arrow:before {
+  content: "\e929";
+}
+
+.icon-left-arrows:before {
+  content: "\e92a";
+}
+
+.icon-medicine:before {
+  content: "\e92b";
+}
+
+.icon-next:before {
+  content: "\e92c";
+}
+
+.icon-pain-killer:before {
+  content: "\e92d";
+}
+
+.icon-paper-plane:before {
+  content: "\e92e";
+}
+
+.icon-patient:before {
+  content: "\e92f";
+}
+
+.icon-pill-4:before {
+  content: "\e930";
+}
+
+.icon-pill-5:before {
+  content: "\e931";
+}
+
+.icon-angle-down:before {
+  content: "\e932";
+}
+
+.icon-arrow-left:before {
+  content: "\e933";
+}
+
+.icon-arrow-right:before {
+  content: "\e934";
+}
+
+.icon-arrow-up:before {
+  content: "\e935";
+}
+
+.icon-broken-bone:before {
+  content: "\e936";
+}
+
+.icon-calender:before {
+  content: "\e937";
+}
+
+.icon-call:before {
+  content: "\e938";
+}
+
+.icon-call-2:before {
+  content: "\e939";
+}
+
+.icon-certification:before {
+  content: "\e93a";
+}
+
+.icon-cheack:before {
+  content: "\e93b";
+}
+
+.icon-comments:before {
+  content: "\e93c";
+}
+
+.icon-cream:before {
+  content: "\e93d";
+}
+
+.icon-date:before {
+  content: "\e93e";
+}
+
+.icon-date-2:before {
+  content: "\e93f";
+}
+
+.icon-download:before {
+  content: "\e940";
+}
+
+.icon-envolope:before {
+  content: "\e941";
+}
+
+.icon-facebook:before {
+  content: "\e942";
+}

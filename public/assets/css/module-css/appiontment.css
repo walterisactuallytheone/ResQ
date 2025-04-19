@@ -1,0 +1,611 @@
+/*==============================================
+    Appiontment One
+===============================================*/
+.appiontment-one {
+    position: relative;
+    display: block;
+    padding: 90px 0 0;
+    z-index: 1;
+}
+
+.appiontment-one__inner {
+    position: relative;
+    display: block;
+    margin-left: 263px;
+    margin-right: 209px;
+}
+
+.appiontment-one__img {
+    position: relative;
+    display: block;
+}
+
+.appiontment-one__img img {
+    width: 100%;
+    border-radius: var(--careon-bdr-radius);
+}
+
+.appiontment-one__appion-box {
+    position: absolute;
+    top: 96px;
+    left: -263px;
+    max-width: 430px;
+    width: 100%;
+    padding: 42px 40px 40px;
+    border-radius: var(--careon-bdr-radius);
+    background-color: var(--careon-white);
+    box-shadow: 4px 4px 20px -1px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+}
+
+.appiontment-one__appion-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 13px;
+}
+
+.appiontment-one__appion-form {
+    position: relative;
+    display: block;
+}
+
+.appiontment-one__appion-input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.appiontment-one__appion-input-box input[type="text"],
+.appiontment-one__appion-input-box input[type="email"] {
+    height: 60px;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: var(--careon-extra);
+    border: none;
+    color: var(--careon-gray);
+    display: block;
+    border-radius: 30px;
+}
+
+.appiontment-one__appion-input-box textarea {
+    height: 130px;
+    width: 100%;
+    padding: 15px 30px 30px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--careon-extra);
+    border: none;
+    color: var(--careon-gray);
+    position: relative;
+    display: block;
+    border-radius: 30px;
+}
+
+.appiontment-one__appion-input-box.text-message-box {
+    height: 130px;
+}
+
+.appiontment-one__appion-btn-box {
+    position: relative;
+    display: block;
+}
+
+.appiontment-one__appion-btn-box .thm-btn {
+    border: none;
+    width: 100%;
+}
+
+.appiontment-one__working-hour {
+    position: absolute;
+    top: 104px;
+    right: -209px;
+    max-width: 410px;
+    width: 100%;
+    padding: 42px 30px 40px;
+    border-radius: var(--careon-bdr-radius);
+    background-color: var(--careon-extra);
+    box-shadow: 4px 4px 20px -1px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+}
+
+.appiontment-one__working-hour-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 23px;
+}
+
+.appiontment-one__working-hour-list {
+    position: relative;
+    display: block;
+    margin-top: 30px;
+}
+
+.appiontment-one__working-hour-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 30px 13px;
+    border-radius: var(--careon-bdr-radius);
+    background-color: var(--careon-white);
+}
+
+.appiontment-one__working-hour-list li+li {
+    margin-top: 20px;
+}
+
+.appiontment-one__working-hour-list li p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+
+
+/*==============================================
+   Appiontment Two
+===============================================*/
+.appiontment-two {
+    position: relative;
+    display: block;
+    padding: 120px 0 0;
+    z-index: 1;
+}
+
+.appiontment-two__inner {
+    position: relative;
+    display: block;
+    border: 1px solid var(--careon-bdr-color);
+    border-radius: 10px;
+    padding: 40px 60px 40px;
+}
+
+.appiontment-two__left {
+    position: relative;
+    display: block;
+    background-color: var(--careon-base);
+    border-radius: 10px;
+    padding: 37px 40px 40px;
+    margin-right: -30px;
+}
+
+.appiontment-two__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    color: var(--careon-white);
+    text-transform: capitalize;
+    margin-bottom: 28px;
+}
+
+.appiontment-two__form {
+    position: relative;
+    display: block;
+}
+
+.appiontment-two__input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.appiontment-two__input-box input[type="text"],
+.appiontment-two__input-box input[type="email"] {
+    height: 50px;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid rgba(var(--careon-white-rgb), .30);
+    color: var(--careon-white);
+    display: block;
+    border-radius: 25px;
+}
+
+.appiontment-two__input-box textarea {
+    height: 115px;
+    width: 100%;
+    padding: 15px 30px 30px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid rgba(var(--careon-white-rgb), .30);
+    color: var(--careon-white);
+    position: relative;
+    display: block;
+    border-radius: 10px;
+}
+
+.appiontment-two__input-box.text-message-box {
+    height: 115px;
+}
+
+.appiontment-two__btn-box {
+    position: relative;
+    display: block;
+}
+
+.appiontment-two__btn-box .thm-btn {
+    border: none;
+}
+
+.appiontment-two__btn-box .thm-btn:hover {
+    color: var(--careon-black);
+}
+
+.appiontment-two__btn-box .thm-btn::before,
+.appiontment-two__btn-box .thm-btn::after {
+    background-color: var(--careon-white);
+}
+
+.appiontment-two__right {
+    position: relative;
+    display: block;
+    margin-top: 73px;
+    margin-left: 60px;
+}
+
+.appiontment-two__right-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+}
+
+.appiontment-two__right-text {
+    margin: 20px 0 40px;
+}
+
+.appiontment-two__points-list {
+    position: relative;
+    display: block;
+}
+
+.appiontment-two__points-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.appiontment-two__points-list li+li {
+    margin-top: 30px;
+}
+
+.appiontment-two__points-list li .icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(var(--careon-base-rgb), .12);
+    border-radius: 15px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.appiontment-two__points-list li:hover .icon {
+    background-color: var(--careon-base);
+}
+
+.appiontment-two__points-list li .icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 33px;
+    color: var(--careon-base);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.appiontment-two__points-list li:hover .icon span {
+    color: var(--careon-white);
+}
+
+.appiontment-two__points-list li .content {
+    position: relative;
+    display: block;
+    flex: 1;
+}
+
+.appiontment-two__points-list li .content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 10px;
+}
+
+.appiontment-two__points-list li .content p a {
+    color: var(--careon-gray);
+}
+
+.appiontment-two__points-list li .content p a:hover {
+    color: var(--careon-base);
+}
+
+
+/*==============================================
+    Appiontment Three
+===============================================*/
+.appiontment-three {
+    position: relative;
+    display: block;
+    padding: 120px 0 0;
+    z-index: 1;
+}
+
+.appiontment-three__left {
+    position: relative;
+    display: block;
+    margin-right: 50px;
+}
+
+.appiontment-three__img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+
+.appiontment-three__img::before {
+    background: hsla(0, 0%, 100%, 0.5);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.appiontment-three__img:hover::before {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.6s linear;
+}
+
+.appiontment-three__img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.appiontment-three__right {
+    position: relative;
+    display: block;
+    margin-left: -330px;
+    padding: 58px 60px 60px;
+    background-color: var(--careon-white);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin-top: 80px;
+    z-index: 2;
+}
+
+.appiontment-three__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    margin-bottom: 27px;
+}
+
+.appiontment-three__form {
+    position: relative;
+    display: block;
+}
+
+.appiontment-three__input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.appiontment-three__input-box input[type="text"],
+.appiontment-three__input-box input[type="email"] {
+    height: 54px;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--careon-bdr-color);
+    color: var(--careon-gray);
+    display: block;
+}
+
+.appiontment-three__input-box textarea {
+    height: 54px;
+    width: 100%;
+    padding: 15px 30px 0px;
+    padding-left: 0;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--careon-bdr-color);
+    color: var(--careon-gray);
+    position: relative;
+    display: block;
+    border-radius: 0px;
+}
+
+.appiontment-three__input-box.text-message-box {
+    height: 54px;
+    margin-bottom: 40px;
+}
+
+.appiontment-three__btn-box {
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+.appiontment-three__btn-box .thm-btn {
+    border: none;
+    background-color: var(--careon-base);
+}
+
+.appiontment-three__btn-box .thm-btn::before,
+.appiontment-three__btn-box .thm-btn::after {
+    background-color: var(--careon-black);
+}
+
+/*==============================================
+    Appoinment Page
+===============================================*/
+.appoinment-page {
+    position: relative;
+    display: block;
+    padding: 120px 0 120px;
+    z-index: 1;
+}
+
+.appoinment-page__left {
+    position: relative;
+    display: block;
+    background-color: var(--careon-white);
+    box-shadow: 4px 4px 20px -1px rgba(0, 0, 0, 0.08);
+    border-radius: var(--careon-bdr-radius);
+    padding: 58px 40px 60px;
+}
+
+.appoinment-page__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    margin-bottom: 28px;
+}
+
+.appoinment-page__form {
+    position: relative;
+    display: block;
+}
+
+.appoinment-page__input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.appoinment-page__input-box input[type="text"],
+.appoinment-page__input-box input[type="email"] {
+    height: 60px;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: var(--careon-extra);
+    border: none;
+    color: var(--careon-gray);
+    display: block;
+    border-radius: 30px;
+}
+
+.appoinment-page__input-box textarea {
+    height: 130px;
+    width: 100%;
+    padding: 15px 30px 30px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--careon-extra);
+    border: none;
+    color: var(--careon-gray);
+    position: relative;
+    display: block;
+    border-radius: 30px;
+}
+
+.appoinment-page__input-box.text-message-box {
+    height: 130px;
+}
+
+.appoinment-page__btn-box {
+    position: relative;
+    display: block;
+}
+
+.appoinment-page__btn-box .thm-btn {
+    border: none;
+    color: var(--careon-black);
+    background-color: var(--careon-primary);
+}
+
+.appoinment-page__right {
+    position: relative;
+    display: block;
+    margin-top: 40px;
+}
+
+.appoinment-page__working-hour {
+    position: relative;
+    display: block;
+    padding: 42px 30px 40px;
+    border-radius: var(--careon-bdr-radius);
+    background-color: var(--careon-extra);
+    box-shadow: 4px 4px 20px -1px rgba(0, 0, 0, 0.08);
+}
+
+.appoinment-page__working-hour-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 23px;
+}
+
+.appoinment-page__working-hour-list {
+    position: relative;
+    display: block;
+    margin-top: 30px;
+}
+
+.appoinment-page__working-hour-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 30px 13px;
+    border-radius: var(--careon-bdr-radius);
+    background-color: var(--careon-white);
+}
+
+.appoinment-page__working-hour-list li+li {
+    margin-top: 20px;
+}
+
+.appoinment-page__working-hour-list li p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+/*==============================================
+   Appiontment Four
+===============================================*/
+.appiontment-four {
+    padding: 90px 0 120px;
+}
+
+
+
+
+
+/*==============================================
+    End
+===============================================*/

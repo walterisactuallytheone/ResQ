@@ -1,0 +1,103 @@
+/*==============================================
+    Brand One
+===============================================*/
+.brand-one {
+    position: relative;
+    display: block;
+    padding: 116px 0 104px;
+    background-color: var(--careon-extra);
+    z-index: 1;
+}
+
+.brand-one__carousel {
+    position: relative;
+    display: block;
+}
+
+.brand-one__single {
+    position: relative;
+    display: block;
+    text-align: center;
+    z-index: 1;
+}
+
+.brand-one__img {
+    position: relative;
+    display: inline-block;
+    z-index: 10;
+}
+
+.brand-one__img>img {
+    width: auto !important;
+    margin: 0 auto 0;
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.brand-one__single:hover .brand-one__img>img {
+    transform: scale(.9);
+}
+
+/*--------------------------------------------------------------
+# Brand Two
+--------------------------------------------------------------*/
+.brand-two {
+    position: relative;
+    display: block;
+    padding: 0 0 0;
+    z-index: 1;
+}
+
+.brand-two__inner {
+    position: relative;
+    display: block;
+    background-color: var(--careon-base);
+    padding: 53px 0;
+    border-radius: 20px;
+}
+
+.brand-two__carousel {
+    position: relative;
+    display: block;
+}
+
+.brand-two__single {
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+.brand-two__img {
+    position: relative;
+    display: block;
+}
+
+.brand-two__img>img {
+    width: auto !important;
+    margin: 0 auto 0;
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.brand-two__single:hover .brand-two__img>img {
+    transform: scale(.9);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/

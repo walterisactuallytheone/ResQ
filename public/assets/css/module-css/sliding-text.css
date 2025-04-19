@@ -1,0 +1,136 @@
+/*==============================================
+    Sliding Text
+===============================================*/
+.sliding-text {
+    position: relative;
+    display: block;
+    z-index: 3;
+}
+
+.sliding-text__inner {
+    position: relative;
+    display: block;
+    background-color: var(--careon-primary);
+    padding: 14px 0 12px;
+}
+
+.sliding-text__list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+
+.sliding-text__list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    float: left;
+}
+
+.sliding-text__list li+li {
+    margin-left: 16px;
+}
+
+.sliding-text__list li>p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    position: relative;
+    display: block;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.sliding-text__list li:hover>p {
+    color: var(--careon-base);
+}
+
+/*==============================================
+    Sliding Text Two
+===============================================*/
+.sliding-text-two {
+    position: relative;
+    display: block;
+    padding: 120px 0 0;
+    z-index: 3;
+}
+
+.sliding-text-two__inner {
+    position: relative;
+    display: block;
+    border-top: 2px solid var(--careon-primary);
+    border-bottom: 2px solid var(--careon-primary);
+    padding: 25px 0 25px;
+}
+
+.sliding-text-two__list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+
+.sliding-text-two__list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    float: left;
+    gap: 30px;
+}
+
+.sliding-text-two__list li+li {
+    margin-left: 30px;
+}
+
+.sliding-text-two__list li .icon {
+    position: relative;
+    display: inline-block;
+}
+
+.sliding-text-two__list li span {
+    position: relative;
+    display: inline-block;
+    font-size: 80px;
+    color: var(--careon-base);
+}
+
+.sliding-text-two__list li>p {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 55px;
+    color: var(--careon-black);
+    text-transform: capitalize;
+    position: relative;
+    display: block;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.sliding-text-two__list li:hover>p {
+    color: var(--careon-base);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/

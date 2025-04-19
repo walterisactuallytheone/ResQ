@@ -1,0 +1,579 @@
+/*==============================================
+    Contact One
+===============================================*/
+.contact-one {
+    position: relative;
+    display: block;
+    padding: 90px 0 120px;
+    z-index: 1;
+}
+
+.contact-one__inner {
+    position: relative;
+    display: block;
+    background-color: var(--careon-white);
+    box-shadow: 4.4px 0px 20px -1px rgba(0, 0, 0, 0.06);
+    border-radius: var(--careon-bdr-radius);
+}
+
+.contact-one__left {
+    position: relative;
+    display: block;
+}
+
+.contact-one__img {
+    position: relative;
+    display: block;
+}
+
+.contact-one__img img {
+    width: 100%;
+    border-top-left-radius: var(--careon-bdr-radius);
+    border-bottom-left-radius: var(--careon-bdr-radius);
+}
+
+.contact-one__right {
+    position: relative;
+    display: block;
+    margin-left: 30px;
+    margin-right: 60px;
+    margin-top: 58px;
+}
+
+.contact-one__right .section-title {
+    margin-bottom: 35px;
+}
+
+.contact-one__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    margin-bottom: 38px;
+}
+
+.contact-one__form {
+    position: relative;
+    display: block;
+}
+
+.contact-one__input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.contact-one__input-box input[type="text"],
+.contact-one__input-box input[type="email"] {
+    height: 60px;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid var(--careon-base);
+    color: var(--careon-gray);
+    display: block;
+    border-radius: 30px;
+}
+
+.contact-one__input-box textarea {
+    height: 130px;
+    width: 100%;
+    padding: 15px 30px 30px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid var(--careon-base);
+    color: var(--careon-gray);
+    position: relative;
+    display: block;
+    border-radius: 30px;
+}
+
+.contact-one__input-box.text-message-box {
+    height: 130px;
+}
+
+.contact-one__btn-box {
+    position: relative;
+    display: block;
+}
+
+.contact-one__btn-box .thm-btn {
+    border: none;
+    width: 100%;
+    justify-content: center;
+    background-color: var(--careon-base);
+}
+
+.contact-one__btn-box .thm-btn::before,
+.contact-one__btn-box .thm-btn::after {
+    background-color: var(--careon-black);
+}
+
+#ui-datepicker-div.ui-widget-content {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid var(--careon-black);
+    color: #252525;
+    font-size: 14px;
+    border-radius: 0px;
+    width: 270px;
+    padding: 5px;
+}
+
+#ui-datepicker-div.ui-datepicker .ui-datepicker-header {
+    background: var(--careon-base) none repeat scroll 0 0;
+    border: 2px solid var(--careon-base);
+    border-radius: 0;
+    color: var(--careon-white);
+    font-weight: 700;
+    padding: 5px 0;
+    position: relative;
+}
+
+.ui-datepicker td a {
+    color: var(--careon-black) !important;
+    text-align: center;
+    background-image: none !important;
+    background: #f5f5f5 !important;
+    border: 1px solid #f9f9f9 !important;
+}
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    border: 1px solid var(--careon-black) !important;
+    background: var(--careon-black) !important;
+    color: var(--careon-white) !important;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+    left: 5px;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    border-radius: 30%;
+    height: 20px;
+    position: absolute;
+    top: 7px;
+    width: 20px;
+    transition: all 500ms ease;
+    cursor: pointer;
+}
+
+.ui-datepicker .ui-datepicker-next {
+    right: 5px;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+    top: 7px;
+    background: var(--careon-white);
+    border: none;
+}
+
+.ui-datepicker table {
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 0 0 0.4em;
+    width: 100%;
+}
+
+.ui-datepicker th {
+    border: medium none;
+    font-weight: 600;
+    padding: 2px 3px;
+    text-align: center;
+}
+
+.ui-datepicker-calendar .ui-state-default:hover,
+.ui-datepicker-calendar .ui-state-default:active {
+    background: var(--careon-black);
+    color: var(--careon-white);
+    border-color: var(--careon-black);
+}
+
+#ui-datepicker-div.ui-widget {
+    font-family: var(--careon-font);
+}
+
+
+/*--------------------------------------------------------------
+# Contact Two
+--------------------------------------------------------------*/
+.contact-two {
+    position: relative;
+    display: block;
+    padding: 120px 0 0;
+    z-index: 1;
+}
+
+.contact-two__bg-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 775px;
+    background-color: var(--careon-black);
+    z-index: -1;
+}
+
+.contact-two__bg-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: .10;
+    bottom: -165px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: leftRight 4s ease-in-out infinite;
+    z-index: -1;
+}
+
+.contact-two .section-title {
+    margin-bottom: 29px;
+}
+
+.contact-two .section-title__tagline {
+    color: var(--careon-white);
+}
+
+.contact-two .section-title__title {
+    color: var(--careon-white);
+}
+
+.contact-two__text {
+    color: var(--careon-white);
+}
+
+.contact-two__inner {
+    position: relative;
+    display: block;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    background-color: var(--careon-white);
+    padding: 60px 60px 60px;
+    margin-top: 60px;
+}
+
+.contact-two__left {
+    position: relative;
+    display: block;
+}
+
+.contact-two__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 55px;
+    margin-bottom: 30px;
+}
+
+.contact-two__form {
+    position: relative;
+    display: block;
+}
+
+.contact-two__input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.contact-two__input-box input[type="text"],
+.contact-two__input-box input[type="email"] {
+    height: 50px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid var(--careon-bdr-color);
+    color: var(--careon-gray);
+    display: block;
+    border-radius: 10px;
+}
+
+.contact-two__input-box .select-box {
+    width: 100%;
+}
+
+.contact-two__input-box .nice-select {
+    height: 50px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid var(--careon-bdr-color);
+    color: var(--careon-gray);
+    border-radius: 10px;
+    line-height: 50px;
+    display: block;
+    float: none;
+}
+
+.contact-two__input-box .nice-select:after {
+    position: absolute;
+    top: 22px;
+    right: 30px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid rgba(var(--careon-white-rgb), .80);
+    border-right: 2px solid rgba(var(--careon-white-rgb), .80);
+    margin-top: 0px;
+    z-index: 10;
+}
+
+.contact-two__input-box .nice-select .option {
+    color: var(--careon-black);
+}
+
+.contact-two__input-box .nice-select .option.selected {
+    font-weight: 500;
+}
+
+.contact-two__input-box .nice-select .option:hover,
+.contact-two__input-box .nice-select .option.focus,
+.contact-two__input-box .nice-select .option.selected.focus {
+    color: var(--careon-white);
+}
+
+.contact-two__input-box textarea {
+    height: 120px;
+    width: 100%;
+    padding: 15px 30px 30px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid var(--careon-bdr-color);
+    color: var(--careon-gray);
+    position: relative;
+    display: block;
+    border-radius: 10px;
+}
+
+.contact-two__input-box.text-message-box {
+    height: 120px;
+}
+
+.contact-two__btn-box {
+    position: relative;
+    display: block;
+}
+
+.contact-two__btn-box .thm-btn {
+    border: none;
+    background-color: var(--careon-base);
+}
+
+.contact-two__btn-box .thm-btn::before,
+.contact-two__btn-box .thm-btn::after {
+    background-color: var(--careon-black);
+}
+
+.contact-two__right {
+    position: relative;
+    display: block;
+    margin-left: 32px;
+}
+
+.contact-two__img {
+    position: relative;
+    display: block;
+}
+
+.contact-two__img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+/*--------------------------------------------------------------
+# Contact Page
+--------------------------------------------------------------*/
+.contact-page {
+    position: relative;
+    display: block;
+    padding: 120px 0 120px;
+    z-index: 1;
+}
+
+.contact-page__left {
+    position: relative;
+    display: block;
+    border: 1px solid var(--careon-base);
+    border-radius: 20px;
+    padding: 37px 39px 39px;
+}
+
+.contact-page__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    margin-bottom: 27px;
+}
+
+.contact-page__form {
+    position: relative;
+    display: block;
+}
+
+.contact-page__input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 26px;
+}
+
+.contact-page__input-box input[type="text"],
+.contact-page__input-box input[type="email"] {
+    height: 54px;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--careon-bdr-color);
+    color: var(--careon-gray);
+    display: block;
+}
+
+.contact-page__input-box textarea {
+    height: 182px;
+    width: 100%;
+    padding: 15px 30px 30px;
+    padding-left: 0;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--careon-bdr-color);
+    color: var(--careon-gray);
+    position: relative;
+    display: block;
+    border-radius: 0px;
+}
+
+.contact-page__input-box.text-message-box {
+    height: 182px;
+    margin-bottom: 40px;
+}
+
+.contact-page__btn-box {
+    position: relative;
+    display: block;
+}
+
+.contact-page__btn-box .thm-btn {
+    border: none;
+}
+
+.contact-page__right {
+    position: relative;
+    display: block;
+    margin-left: 30px;
+}
+
+.contact-page__right .section-title {
+    margin-bottom: 20px;
+}
+
+.contact-page__contact-list {
+    position: relative;
+    display: block;
+    margin-top: 33px;
+}
+
+.contact-page__contact-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--careon-bdr-color);
+    border-radius: var(--careon-bdr-radius);
+    padding: 20px 38px 21px;
+    max-width: 280px;
+    width: 100%;
+    gap: 20px;
+}
+
+.contact-page__contact-list li+li {
+    margin-top: 30px;
+}
+
+.contact-page__contact-list li .icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--careon-black);
+    border-radius: 50%;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.contact-page__contact-list li:hover .icon {
+    background-color: var(--careon-base);
+}
+
+.contact-page__contact-list li .icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    color: var(--careon-white);
+}
+
+.contact-page__contact-list li .content {
+    position: relative;
+    display: block;
+    flex: 1;
+}
+
+.contact-page__contact-list li .content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34px;
+    margin-bottom: 8px;
+}
+
+.contact-page__contact-list li .content p {
+    color: var(--careon-gray);
+}
+
+.contact-page__contact-list li .content p a {
+    color: var(--careon-gray);
+}
+
+.contact-page__contact-list li .content p a:hover {
+    color: var(--careon-base);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/

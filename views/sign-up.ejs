@@ -1,0 +1,148 @@
+<!-- Page Header Start -->
+<!-- <section class="page-header">
+    <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Sign Up</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="/">Home</a></li>
+                <li><span>/</span></li>
+                <li>Sign Up</li>
+            </ul>
+        </div>
+    </div>
+</section> -->
+<!-- Page Header End -->
+<br>
+<br>
+<br>
+<br>
+<!-- Sign Up Form Start -->
+<section class="contact-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8">
+                <div class="contact-page__form" style="border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.1); padding: 40px;">
+                    <div class="section-title text-center">
+                        <h2 class="section-title__title">Create Your Account</h2>
+                        <p class="mt-3">Join us today and get access to all our services!</p>
+                    </div>
+                    <form action="#" class="contact-page__form-box" id="signUpForm">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="contact-page__input-box">
+                                    <input type="text" placeholder="First Name" name="firstName" id="firstName" required style="border-radius: 10px; padding: 15px; border: 1px solid #e0e0e0;">
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="contact-page__input-box">
+                                    <input type="text" placeholder="Last Name" name="lastName" id="lastName" required style="border-radius: 10px; padding: 15px; border: 1px solid #e0e0e0;">
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="contact-page__input-box">
+                                    <input type="email" placeholder="Email Address" name="email" id="email" required style="border-radius: 10px; padding: 15px; border: 1px solid #e0e0e0;">
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="contact-page__input-box position-relative">
+                                    <input type="password" placeholder="Password" name="password" id="password" required style="border-radius: 10px; padding: 15px; border: 1px solid #e0e0e0; padding-right: 50px;">
+                                    <span onclick="togglePassword('password', 'toggleIconPassword')" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                        <i id="toggleIconPassword" class="fas fa-eye-slash"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="contact-page__input-box position-relative">
+                                    <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required style="border-radius: 10px; padding: 15px; border: 1px solid #e0e0e0; padding-right: 50px;">
+                                    <span onclick="togglePassword('confirmPassword', 'toggleIconConfirm')" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                        <i id="toggleIconConfirm" class="fas fa-eye-slash"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 mb-4">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                    <label class="form-check-label" for="termsCheck">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="contact-page__btn-box">
+                                    <button type="submit" class="thm-btn w-100" style="border-radius: 10px;">Create Account</button>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 mt-4 text-center">
+                                <p>Already have an account? <a href="/login" class="login-link">Login</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sign Up Form End -->
+
+<script>
+    function togglePassword(inputId, iconId) {
+        const passwordInput = document.getElementById(inputId);
+        const toggleIcon = document.getElementById(iconId);
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+        } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+        }
+    }
+
+    document.getElementById('signUpForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+        
+        // Get form data
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        
+        try {
+            // Send registration request to API
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    firstName, 
+                    lastName, 
+                    email, 
+                    password 
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                alert('Registration successful! Please login.');
+                window.location.href = '/login';
+            } else {
+                // Show error message
+                alert(data.message || 'Registration failed');
+            }
+        } catch (error) {
+            console.error('Registration error:', error);
+            alert('An error occurred during registration');
+        }
+    });
+</script> 

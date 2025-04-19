@@ -1,0 +1,196 @@
+/*==============================================
+    Video One
+===============================================*/
+.video-one {
+    position: relative;
+    display: block;
+    padding: 120px 0 0;
+    z-index: 1;
+}
+
+.video-one__left {
+    position: relative;
+    display: block;
+}
+
+.video-one__img {
+    position: relative;
+    display: block;
+}
+
+.video-one__img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.video-one__round-text-box {
+    position: absolute;
+    width: 195px;
+    height: 195px;
+    border-radius: 50%;
+    background-color: var(--careon-base);
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 5;
+}
+
+.video-one__round-text-box-inner {
+    position: relative;
+    display: block;
+    width: 195px;
+    height: 195px;
+}
+
+.video-one__curved-circle {
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    bottom: 0;
+    right: 0;
+    color: var(--careon-white);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: -1px;
+    transform: rotate(0deg);
+    height: 180px !important;
+}
+
+
+.video-one__video-icon {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--careon-white);
+    background-color: transparent;
+    border: 1px solid var(--careon-white);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.video-one__video-icon:hover {
+    background-color: var(--careon-black);
+    color: var(--careon-white);
+    border: 1px solid var(--careon-black);
+}
+
+.video-one__video-link .ripple,
+.video-one__video-icon .ripple:before,
+.video-one__video-icon .ripple:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -ms-box-shadow: 0 0 0 0 rgba(var(--careon-white-rgb), 0.6);
+    -o-box-shadow: 0 0 0 0 rgba(var(--careon-white-rgb), 0.6);
+    -webkit-box-shadow: 0 0 0 0 rgba(var(--careon-white-rgb), 0.6);
+    box-shadow: 0 0 0 0 rgba(var(--careon-white-rgb), 0.6);
+    -webkit-animation: ripple 3s infinite;
+    animation: ripple 3s infinite;
+}
+
+.video-one__video-icon .ripple:before {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+    content: "";
+    position: absolute;
+}
+
+.video-one__video-icon .ripple:after {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+    content: "";
+    position: absolute;
+}
+
+.video-one__right {
+    position: relative;
+    display: block;
+}
+
+.video-one__content-box {
+    position: relative;
+    display: block;
+    border: 1px solid var(--careon-extra);
+    border-radius: 10px;
+    padding: 40px 40px 180px;
+}
+
+.video-one__content-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.video-one__content-icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 65px;
+    color: var(--careon-base);
+}
+
+.video-one__content-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-top: 34px;
+    margin-bottom: 26px;
+}
+
+.video-one__content-text {
+    margin-bottom: 26px;
+}
+
+.video-one__btn-box {
+    position: relative;
+    display: block;
+}
+
+.video-one__btn-box .thm-btn {
+    background-color: var(--careon-extra);
+    color: var(--careon-black);
+    padding: 21px 30px 21px;
+}
+
+.video-one__shape-1 {
+    position: absolute;
+    bottom: 5px;
+    right: 14px;
+    z-index: -1;
+}
+
+.video-one__shape-1 img {
+    width: auto;
+}
+
+
+
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/

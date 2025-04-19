@@ -1,0 +1,184 @@
+/*==============================================
+    Pricing One
+===============================================*/
+.pricing-one {
+    position: relative;
+    display: block;
+    padding: 120px 0 90px;
+    z-index: 1;
+}
+
+.pricing-one__single {
+    position: relative;
+    display: block;
+    background-color: var(--careon-extra);
+    border-radius: 10px;
+    padding: 47px 40px 40px;
+    margin-bottom: 30px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.pricing-one__single:hover {
+    background-color: var(--careon-white);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+}
+
+.pricing-one__price-pack-name {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 35px;
+}
+
+.pricing-one__img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.pricing-one__img:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(var(--careon-black-rgb), 1);
+    opacity: 0;
+    transition: background-color 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.pricing-one__single:hover .pricing-one__img:before {
+    opacity: .50;
+}
+
+.pricing-one__img img {
+    width: 100%;
+    border-radius: 10px;
+    transform: scale3d(1, 1, 1);
+    transition: transform 1s ease-in-out;
+}
+
+.pricing-one__single:hover .pricing-one__img img {
+    transform: scale(1.05) rotate(0deg);
+}
+
+.pricing-one__price-box {
+    position: relative;
+    display: block;
+    border-bottom: 2px solid rgba(var(--careon-black-rgb), .20);
+    padding-bottom: 20px;
+    margin-top: 35px;
+    margin-bottom: 29px;
+}
+
+.pricing-one__price-box h2 {
+    position: relative;
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 0.9em;
+}
+
+.pricing-one__price-box h2 span {
+    font-size: 14px;
+    color: var(--careon-gray);
+    font-weight: 400;
+    position: relative;
+    line-height: 14px;
+}
+
+.pricing-one__point {
+    position: relative;
+    display: block;
+}
+
+.pricing-one__point li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.pricing-one__point li+li {
+    margin-top: 13px;
+}
+
+.pricing-one__point li .icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    background-color: var(--careon-base);
+    border-radius: 50%;
+    font-size: 8px;
+    color: var(--careon-white);
+}
+
+.pricing-one__point li .text {
+    position: relative;
+    display: block;
+    flex: 1;
+}
+
+.pricing-one__point li .text p {
+    font-size: 14px;
+}
+
+.pricing-one__btn-box {
+    position: relative;
+    display: block;
+    margin-top: 29px;
+}
+
+.pricing-one__btn-box .thm-btn {
+    background-color: var(--careon-white);
+    color: var(--careon-black);
+    width: 100%;
+}
+
+.pricing-one__single:hover .pricing-one__btn-box .thm-btn::after {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.pricing-one__single:hover .pricing-one__btn-box .thm-btn::before {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.pricing-one__single:hover .pricing-one__btn-box .thm-btn {
+    color: var(--careon-white);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==============================================
+    End
+===============================================*/

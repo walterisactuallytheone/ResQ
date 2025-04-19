@@ -1,0 +1,182 @@
+body,
+body .site-footer__bottom-inner,
+.site-footer__newsletter-inner,
+.services-one__single,
+.main-menu__wrapper-inner {
+    background-color: #011030;
+}
+
+
+.site-footer,
+.contact-one__inner,
+.testimonial-one__single,
+.faq-one__inner,
+.services-one__icon,
+.services-one,
+.brand-one,
+.about-one__working-hour,
+.about-one__content-box {
+    background-color: #04163c;
+}
+
+.stricky-header.main-menu {
+    background-color: #011030;
+}
+
+.banner-one {
+    background: transparent;
+    background-color: #04163c;
+}
+
+.banner-one__call-icon {
+    color: var(--careon-white);
+    border: 1px solid rgba(var(--careon-white-rgb), .20);
+}
+
+.banner-one__find-doctor {
+    background-color: #011030;
+    border: 1px solid rgba(var(--careon-white-rgb), .20);
+}
+
+.site-footer__bottom-menu li a,
+.site-footer__copyright-text,
+.footer-widget__services-link-list li a,
+.footer-widget__contact-text,
+.footer-widget__contact-text a,
+.footer-widget__contact-content span,
+.site-footer__newsletter-input input[type="email"],
+.contact-one__input-box textarea,
+.contact-one__input-box input[type="text"],
+.contact-one__input-box input[type="email"],
+.blog-one__meta li p,
+.testimonial-one__client-info p,
+.testimonial-one__text,
+.testimonial-one__ratting span.icon-star-color,
+.testimonial-one__text-1,
+.faq-one__left .faq-one-accrodion .accrodion-content p,
+.team-one__social a,
+.team-one__sub-title,
+.services-one__text,
+.about-one__working-hour-list li span,
+.about-one__working-hour-list li p,
+.about-one__points-box li p,
+.about-one__text,
+.banner-one__text,
+.banner-one__call-sub-title {
+    color: rgba(var(--careon-white-rgb), .50);
+}
+
+
+.site-footer__copyright-text a:hover,
+.site-footer__bottom-menu li a:hover,
+.footer-widget__services-link-list li a:hover,
+.footer-widget__contact-icon span,
+.footer-widget__title,
+.site-footer__newsletter-title,
+.contact-one__title,
+.blog-one__title a,
+.blog-one__meta li .icon span,
+.testimonial-one__client-info h4 a,
+.testimonial-one__ratting span,
+.faq-one__left .faq-one-accrodion .accrodion-title h4::before,
+.faq-one-accrodion__count:before,
+.faq-one__left .faq-one-accrodion .accrodion-title h4,
+.team-one__title a,
+.services-one__read-more,
+.services-one__icon span,
+.services-one__title a,
+.about-one__working-hour-title,
+.about-one__points-box li .icon span,
+.feature-one__feature-list-sub-title,
+.feature-one__feature-list-icon span,
+.feature-one__feature-list-title a,
+.section-title__title,
+.section-title__tagline span,
+.section-title__tagline,
+.banner-one__title,
+.banner-one__title span,
+.banner-one__call-number a,
+.banner-one__find-doctor-title,
+.banner-one__find-doctor-name h4 a,
+.main-menu .main-menu__list>li>a,
+.stricky-header .main-menu__list>li>a,
+.main-menu .main-menu__list>li.dropdown>a:after {
+    color: var(--careon-white);
+}
+
+
+.main-menu .main-menu__list>li.current>a::after,
+.main-menu .main-menu__list>li:hover>a::after,
+.stricky-header .main-menu__list>li.current>a::after,
+.stricky-header .main-menu__list>li:hover>a::after {
+    color: var(--careon-base);
+}
+
+
+.feature-one__feature-list li:hover .feature-one__feature-list-sub-title,
+.feature-one__feature-list li:hover .feature-one__feature-list-icon span,
+.feature-one__feature-list li:hover .feature-one__feature-list-title a {
+    color: var(--careon-black);
+}
+
+
+
+.blog-one__read-more .thm-btn::before,
+.blog-one__read-more .thm-btn::after {
+    background-color: var(--careon-base);
+}
+
+
+
+.faq-one__left .faq-one-accrodion .accrodion-title h4::before {
+    background-color: var(--careon-black);
+}
+
+
+
+
+
+.site-footer__newsletter-input input[type="email"],
+.team-one__single,
+.feature-one__feature-list li {
+    border: 2px solid rgba(var(--careon-white-rgb), .20);
+}
+
+
+.team-one__single:hover {
+    border: 2px solid var(--careon-base);
+}
+
+
+
+.site-footer__bottom-inner,
+.footer-widget__contact-icon,
+.contact-one__input-box textarea,
+.contact-one__input-box input[type="text"],
+.contact-one__input-box input[type="email"],
+.faq-one__left .faq-one-accrodion .accrodion,
+.team-one__social a,
+.about-one__working-hour-list li,
+.about-one__working-hour {
+    border: 1px solid rgba(var(--careon-white-rgb), .20);
+}
+
+
+
+.services-one__btn-box .thm-btn {
+    border: 1px solid var(--careon-base);
+}
+
+
+
+
+
+.brand-one__img>img {
+    filter: contrast(0.5);
+}
+
+.site-footer__bg-shape {
+    filter: invert(1);
+}
+
+/* The End */

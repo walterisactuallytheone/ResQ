@@ -1,0 +1,365 @@
+/*==============================================
+    Counter One
+===============================================*/
+.counter-one {
+    position: relative;
+    display: block;
+    padding: 90px 0 0;
+    z-index: 1;
+}
+
+.counter-one__inner {
+    position: relative;
+    display: block;
+    padding: 40px 40px 10px;
+    background-color: var(--careon-white);
+    box-shadow: 0px 4.4px 20px rgba(19, 16, 34, 0.05);
+    border-radius: var(--careon-bdr-radius);
+}
+
+.counter-one__count-list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: -40px;
+    margin-right: -40px;
+}
+
+.counter-one__count-list li {
+    position: relative;
+    display: block;
+    flex: 0 0 25%;
+    max-width: 25%;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.counter-one__count-single {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--careon-extra);
+    border-radius: var(--careon-bdr-radius);
+    padding: 20px 20px 20px;
+    margin-bottom: 30px;
+}
+
+.counter-one__count-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.counter-one__count-box h3 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 48px !important;
+    font-family: var(--careon-font) !important;
+}
+
+.counter-one__count-box span {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 48px !important;
+    font-family: var(--careon-font) !important;
+    color: var(--careon-black);
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Counter Two
+--------------------------------------------------------------*/
+.counter-two {
+    position: relative;
+    display: block;
+    z-index: 2;
+}
+
+.counter-two__inner {
+    position: relative;
+    display: block;
+    background-color: var(--careon-base);
+    border-radius: 10px;
+    padding: 56px 60px 40px;
+}
+
+.counter-two__count-list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.counter-two__count-list li {
+    position: relative;
+    display: flex;
+    flex: 0 0 25%;
+    max-width: 25%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.counter-two__count-list li .icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(var(--careon-extra-rgb), .10);
+    border-radius: 50%;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.counter-two__count-list li:hover .icon {
+    background-color: var(--careon-black);
+}
+
+.counter-two__count-list li .icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 30px;
+    color: var(--careon-white);
+    transform: scale(1);
+    transition: 500ms ease;
+}
+
+.counter-two__count-list li:hover .icon span {
+    transform: scale(0.9);
+}
+
+.counter-two__count-list li .content {
+    position: relative;
+    display: block;
+    flex: 1;
+}
+
+.counter-two__count-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.counter-two__count-box h3 {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 50px !important;
+    color: var(--careon-white);
+    font-family: var(--careon-font) !important;
+}
+
+.counter-two__count-box span {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 50px !important;
+    color: var(--careon-white);
+    font-family: var(--careon-font) !important;
+}
+
+.counter-two__count-text {
+    color: var(--careon-white);
+    line-height: 16px;
+    margin-top: 3px;
+}
+
+
+/*--------------------------------------------------------------
+# Counter Three
+--------------------------------------------------------------*/
+.counter-three {
+    position: relative;
+    display: block;
+    margin-top: -130px;
+    z-index: 1;
+}
+
+.counter-three__inner {
+    position: relative;
+    display: block;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    background-color: var(--careon-white);
+    padding: 40px 50px 10px;
+}
+
+.counter-three__list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: -35px;
+    margin-right: -35px;
+}
+
+.counter-three__list li {
+    position: relative;
+    display: block;
+    flex: 0 0 25%;
+    max-width: 25%;
+    width: 100%;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.counter-three__single {
+    position: relative;
+    display: block;
+    border: 1px solid var(--careon-extra);
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px 0 31px;
+    margin-bottom: 30px;
+}
+
+.counter-three__count-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-three__count-box h3 {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 60px !important;
+    font-family: var(--careon-font) !important;
+}
+
+.counter-three__count-box span {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 60px;
+    font-family: var(--careon-font);
+    color: var(--careon-black);
+}
+
+.counter-three__text {
+    margin-top: 4px;
+}
+
+/*--------------------------------------------------------------
+# Counter Four
+--------------------------------------------------------------*/
+.counter-four {
+    position: relative;
+    display: block;
+    margin-top: -90px;
+    z-index: 3;
+}
+
+.counter-four__inner {
+    position: relative;
+    display: block;
+    border-radius: 10px;
+    background-color: var(--careon-base);
+    padding: 40px 50px 11px;
+}
+
+.counter-four__list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.counter-four__list li {
+    position: relative;
+    display: block;
+}
+
+.counter-four__single {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.counter-four__single:before {
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: -160px;
+    width: 108px;
+    height: 2px;
+    background-color: rgba(var(--careon-white-rgb), .40);
+}
+
+.counter-four__list li:first-child .counter-four__single:before {
+    display: none;
+}
+
+.counter-four__count-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-four__count-box h3 {
+    font-size: 55px;
+    font-weight: 600;
+    line-height: 55px !important;
+    font-family: var(--careon-font) !important;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(var(--careon-white-rgb), 1);
+}
+
+.counter-four__count-box span {
+    font-size: 55px;
+    font-weight: 600;
+    line-height: 55px;
+    font-family: var(--careon-font);
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(var(--careon-white-rgb), 1);
+}
+
+.counter-four__text {
+    color: var(--careon-white);
+    margin-top: 9px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/

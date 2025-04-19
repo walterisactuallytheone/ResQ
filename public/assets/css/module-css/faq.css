@@ -1,0 +1,559 @@
+/*==============================================
+    FAQ One
+===============================================*/
+.faq-one {
+    position: relative;
+    display: block;
+    counter-reset: count;
+    padding: 90px 0 0;
+    z-index: 1;
+}
+
+.faq-one__inner {
+    position: relative;
+    display: block;
+    background-color: var(--careon-extra);
+    border-radius: 60px;
+    padding: 120px 60px 120px;
+}
+
+.faq-one__left {
+    position: relative;
+    display: block;
+    margin-right: 40px;
+}
+
+.faq-one__left .section-title {
+    margin-bottom: 39px;
+}
+
+.faq-one__left .faq-one-accrodion .accrodion {
+    position: relative;
+    display: block;
+    border: 1px solid rgba(var(--careon-black-rgb), .23);
+    border-radius: var(--careon-bdr-radius);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.faq-one__left .faq-one-accrodion .accrodion-title {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    padding: 20px 30px 20px;
+    padding-left: 80px;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+    padding-right: 25px;
+}
+
+.faq-one__left .faq-one-accrodion .accrodion-title h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    color: var(--careon-black);
+    text-transform: capitalize;
+    position: relative;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.faq-one__left .faq-one-accrodion .accrodion+.accrodion {
+    margin-top: 30px;
+}
+
+.faq-one__left .faq-one-accrodion .accrodion-title h4::before {
+    content: "\e933";
+    font-family: 'icomoon' !important;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--careon-black);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--careon-primary);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    text-align: center;
+}
+
+.faq-one__left .faq-one-accrodion .accrodion.active .accrodion-title h4::before {
+    content: "\e932";
+}
+
+.faq-one__left .faq-one-accrodion .accrodion-content {
+    position: relative;
+    padding-bottom: 31px;
+    padding-left: 80px;
+    padding-right: 50px;
+    margin-top: 1px;
+}
+
+.faq-one__left .faq-one-accrodion .accrodion-content p {
+    margin: 0;
+}
+
+.faq-one-accrodion__count {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+}
+
+.faq-one-accrodion__count:before {
+    position: relative;
+    display: block;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    color: var(--careon-black);
+    counter-increment: count;
+    content: "0"counter(count);
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.faq-one__right {
+    position: relative;
+    display: block;
+    margin-left: -10px;
+}
+
+.faq-one__img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--careon-bdr-radius);
+    z-index: 1;
+}
+
+.faq-one__img::before {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, .7) 0%, rgba(255, 255, 255, .3) 100%);
+    transform: skewX(17deg);
+    z-index: 1;
+}
+
+.faq-one__img:hover::before {
+    -webkit-animation: shine 1.9s;
+    animation: shine 1.9s;
+}
+
+.faq-one__img img {
+    width: 100%;
+    border-radius: var(--careon-bdr-radius);
+}
+
+/*--------------------------------------------------------------
+# FAQ Two
+--------------------------------------------------------------*/
+.faq-two {
+    position: relative;
+    display: block;
+    counter-reset: count;
+    padding: 120px 0 188px;
+    z-index: 1;
+}
+
+.faq-two__left {
+    position: relative;
+    display: block;
+}
+
+.faq-two__left .section-title-two {
+    margin-bottom: 21px;
+}
+
+.faq-two__btn-box {
+    position: relative;
+    display: block;
+    margin-top: 30px;
+}
+
+.faq-two__btn-box .thm-btn {
+    background-color: var(--careon-base);
+    padding: 5px 20px 5px;
+    padding-right: 5px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.faq-two__btn-box .thm-btn::before,
+.faq-two__btn-box .thm-btn::after {
+    background-color: var(--careon-black);
+}
+
+.faq-two__btn-box .thm-btn i {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(var(--careon-white-rgb), .10);
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.faq-two__right {
+    position: relative;
+    display: block;
+    margin-left: 30px;
+}
+
+.faq-two__right .faq-one-accrodion .accrodion {
+    position: relative;
+    display: block;
+    border: 2px solid rgba(var(--careon-black-rgb), .23);
+    border-radius: var(--careon-bdr-radius);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.faq-two__right .faq-one-accrodion .accrodion.active {
+    border: 2px solid var(--careon-primary);
+}
+
+.faq-two__right .faq-one-accrodion .accrodion-title {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    padding: 19px 25px 19px;
+    padding-left: 65px;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.faq-two__right .faq-one-accrodion .accrodion-title h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    color: var(--careon-black);
+    text-transform: capitalize;
+    position: relative;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.faq-two__right .faq-one-accrodion .accrodion+.accrodion {
+    margin-top: 30px;
+}
+
+.faq-two__right .faq-one-accrodion .accrodion-title h4::before {
+    content: "\e933";
+    font-family: 'icomoon' !important;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--careon-black);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    text-align: center;
+}
+
+.faq-two__right .faq-one-accrodion .accrodion.active .accrodion-title h4::before {
+    content: "\e932";
+    color: var(--careon-primary);
+}
+
+.faq-two__right .faq-one-accrodion .accrodion-content {
+    position: relative;
+    padding-bottom: 31px;
+    padding-left: 80px;
+    padding-right: 20px;
+    margin-top: 1px;
+}
+
+.faq-two__right .faq-one-accrodion .accrodion-content p {
+    margin: 0;
+}
+
+.faq-two-accrodion__count {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+}
+
+.faq-two-accrodion__count:before {
+    position: relative;
+    display: block;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    color: var(--careon-black);
+    counter-increment: count;
+    content: "0"counter(count);
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.faq-two-accrodion__count::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    right: -5px;
+    width: 3px;
+    height: 3px;
+    background-color: var(--careon-black);
+}
+
+/*--------------------------------------------------------------
+# FAQ Three
+--------------------------------------------------------------*/
+.faq-three {
+    position: relative;
+    display: block;
+    counter-reset: count;
+    padding: 120px 0 120px;
+    z-index: 1;
+}
+
+.faq-three__left {
+    position: relative;
+    display: block;
+}
+
+.faq-three__left .faq-one-accrodion .accrodion {
+    position: relative;
+    display: block;
+    border: 1px solid rgba(var(--careon-extra-rgb), 1);
+    border-radius: 10px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.faq-three__left .faq-one-accrodion .accrodion.active {
+    border: 1px solid rgba(var(--careon-black-rgb), 1);
+}
+
+.faq-three__left .faq-one-accrodion .accrodion-title {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    padding: 21px 30px 21px;
+    padding-left: 65px;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.faq-three__left .faq-one-accrodion .accrodion-title h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    color: var(--careon-black);
+    text-transform: capitalize;
+    position: relative;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.faq-three__left .faq-one-accrodion .accrodion+.accrodion {
+    margin-top: 20px;
+}
+
+.faq-three__left .faq-one-accrodion .accrodion-title h4::before {
+    content: "\e933";
+    font-family: 'icomoon' !important;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--careon-base);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    height: 40px;
+    width: 40px;
+    background-color: var(--careon-extra);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    text-align: center;
+}
+
+.faq-three__left .faq-one-accrodion .accrodion.active .accrodion-title h4::before {
+    content: "\e932";
+    color: var(--careon-white);
+    background-color: var(--careon-base);
+}
+
+.faq-three__left .faq-one-accrodion .accrodion-content {
+    position: relative;
+    padding-bottom: 31px;
+    padding-left: 80px;
+    padding-right: 20px;
+    margin-top: 1px;
+}
+
+.faq-three__left .faq-one-accrodion .accrodion-content p {
+    margin: 0;
+}
+
+.faq-three-accrodion__count {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+}
+
+.faq-three-accrodion__count:before {
+    position: relative;
+    display: block;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    color: var(--careon-black);
+    counter-increment: count;
+    content: "0"counter(count);
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.faq-three-accrodion__count::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    right: -5px;
+    width: 3px;
+    height: 3px;
+    background-color: var(--careon-black);
+}
+
+.faq-three__right {
+    position: relative;
+    display: block;
+}
+
+.faq-three__img {
+    position: relative;
+    display: block;
+}
+
+.faq-three__img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.faq-three__contact-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(var(--careon-white-rgb), .90);
+    border-radius: 10px;
+    padding: 17px 20px 21px;
+    max-width: 292px;
+    width: 100%;
+}
+
+.faq-three__contact-info-list {
+    position: relative;
+    display: block;
+}
+
+.faq-three__contact-info-list li {
+    position: relative;
+    display: block;
+}
+
+.faq-three__contact-info-list li+li {
+    margin-top: 27px;
+}
+
+.faq-three__contact-info-icon-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.faq-three__contact-info-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.faq-three__contact-info-icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    color: var(--careon-black);
+}
+
+.faq-three__contact-info-number {
+    position: relative;
+    display: block;
+}
+
+.faq-three__contact-info-number p {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    color: var(--careon-black);
+}
+
+.faq-three__contact-info-number p a {
+    color: var(--careon-black);
+}
+
+.faq-three__contact-info-number p a:hover {
+    color: var(--careon-base);
+}
+
+
+/*--------------------------------------------------------------
+# FAQ Four
+--------------------------------------------------------------*/
+.faq-four {
+    padding: 90px 0 120px;
+}
+
+/*--------------------------------------------------------------
+# FAQ Page
+--------------------------------------------------------------*/
+.faq-page {
+    position: relative;
+    display: block;
+    counter-reset: count;
+    padding: 120px 0 90px;
+    z-index: 1;
+}
+
+.faq-page .faq-one__left {
+    margin-bottom: 30px;
+    margin-right: 0;
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/
