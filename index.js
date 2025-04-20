@@ -128,9 +128,72 @@ app.get('/ambulance', (req, res) => {
 app.get('/track-ambulance', (req, res) => {
   res.render('track-ambulance', { 
     title: 'Track Ambulance | ResQ',
-    page: 'ambulance' // Keep 'ambulance' to maintain nav highlighting
+    page: 'ambulance' 
   });
 });
+
+app.get('/shop', (req, res) => {
+  res.render('shop', { 
+    title: 'Quick-Med Shop | ResQ',
+    page: 'shop'
+  });
+});
+
+app.get('/cart', (req, res) => {
+  res.render('cart', { 
+    title: 'Cart Shop | ResQ',
+    page: 'cart'
+  });
+});
+
+app.get('/checkout', (req, res) => {
+  res.render('checkout', { 
+    title: 'Checkout | ResQ',
+    page: 'checkout'
+  });
+});
+
+app.get('/wishlist', (req, res) => {
+  res.render('wishlist', { 
+    title: 'Wishlist | ResQ',
+    page: 'wishlist'
+  });
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', { 
+    title: 'Contact | ResQ',
+    page: 'contact'
+  });
+});
+
+
+
+
+
+app.get('/doctors', (req, res) => {
+  res.render('doctors', { 
+    title: 'Doctors | ResQ',
+    page: 'doctors'
+  });
+});
+
+app.get('/hospitals', (req, res) => {
+  res.render('hospitals', { 
+    title: 'Hospitals | ResQ',
+    page: 'hospitals'
+  });
+});
+
+
+app.get('/services', (req, res) => {
+  res.render('services', { 
+    title: 'Services | ResQ',
+    page: 'contact'
+  });
+});
+
+
 
 // Route directly to the auth routes for the logout page
 app.get('/logout', (req, res) => {
