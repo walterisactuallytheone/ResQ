@@ -1,15 +1,15 @@
-<h1 align="center">ResQ – Healthcare Management System</h1>
+<h1 align="center">ResQ – Healthcare Management System</h1>
 
 <p align="center">
   <img src="https://res.cloudinary.com/dcd51y8m1/image/upload/v1745081757/ResQ/py9xbcsisb5trysxlu9e.png" alt="ResQ Banner" width="80%"/>
 </p>
 
-<h2 align="center">Problem Statement 5: Elderly Care Reminder System (WEB-004)</h2>
+<h2 align="center">Problem Statement 5: Elderly Care Reminder System (WEB-004)</h2>
 
 <p align="center">
-  Imagine Rahul’s grandpa, Mr. Sharma, who thinks his pills are on a secret mission because he keeps forgetting them—again and again! Meanwhile, Rahul’s juggling deadlines, laundry, and grandma’s famous but forgettable cookie recipes. It’s like herding cats who forgot they’re cats! What he needs is a sidekick that reminds grandpa about meds, nudges for appointments, and gives Rahul ultimate peace of mind.
+  Imagine Rahul's grandpa, Mr. Sharma, who thinks his pills are on a secret mission because he keeps forgetting them—again and again! Meanwhile, Rahul's juggling deadlines, laundry, and grandma's famous but forgettable cookie recipes. It's like herding cats who forgot they're cats! What he needs is a sidekick that reminds grandpa about meds, nudges for appointments, and gives Rahul ultimate peace of mind.
   
-  ⚠️ <strong>Under Construction:</strong> Currently more blueprint than building—ResQ isn’t live yet, but here’s what’s coming!
+  ⚠️ <strong>Under Construction:</strong> Currently more blueprint than building—ResQ isn't live yet, but here's what's coming!
 </p>
 
 ---
@@ -20,15 +20,16 @@
 - **Appointment Management**: Schedule, view & cancel (doctor, specialty, date & time)
 - **Medication Reminders**: Multi-dose meds & flexible frequency options
 - **Responsive UI**: Built with EJS, Bootstrap, HTML5/CSS3, JavaScript & jQuery
-- **Email & Push Notifications**: Nodemailer & Web Push API
-- **PWA Support**: Installable on desktop & mobile home screens
-- **Advanced Reminder System**: Custom schedules & recurring alerts
-- **Medical Records & Directories**: Upload history, search doctors & hospitals
-- **Quick-Med Delivery**: Under 20‑minute medicine delivery
-- **Emergency Ambulance Booking**: 10‑minute arrival guarantee
-- **Hospital Bed Availability**: Real‑time tracker of empty beds
-- **Treatment Directory**: Browse all treatments offered by hospitals
-- **Doctor Directory & Booking**: Doctor profiles with one‑click appointment
+- **Email Notifications**: SendGrid integration with delivery status tracking
+- **Ambulance Services**: Emergency booking with location tracking
+- **PWA Support** (Planned): Installable on desktop & mobile home screens
+- **Push Notifications** (Planned): Web Push API implementation
+- **Advanced Reminder System** (Planned): Custom schedules & recurring alerts
+- **Medical Records & Directories** (Planned): Upload history, search doctors & hospitals
+- **Quick-Med Delivery** (Planned): Under 20‑minute medicine delivery
+- **Hospital Bed Availability** (Planned): Real‑time tracker of empty beds
+- **Treatment Directory** (Planned): Browse all treatments offered by hospitals
+- **Doctor Directory & Booking** (Planned): Doctor profiles with one‑click appointment
 
 ---
 
@@ -40,22 +41,29 @@
   - JWT, bcryptjs, express-session & cookie‑parser
 - **Appointment Management**  
   - Schedule, view & cancel medical appointments  
-  - Select doctor, specialty, date & time  
+  - Select doctor, specialty, date & time
+  - Email reminders (day before, hour before, at appointment time)
+  - Visual status indicators for reminder delivery status
 - **Medication Reminders**  
   - Add medications with multiple dosage times  
-  - Flexible frequency (daily, twice daily, custom…)  
+  - Flexible frequency (daily, twice daily, custom…)
+  - Email notifications with status tracking
 - **Responsive UI**  
   - Works flawlessly across devices (mobile & desktop)
+- **Emergency Services**
+  - Ambulance booking with location details
+  - Ambulance tracking functionality
+- **Email Notifications** 
+  - SendGrid integration for reliable delivery
+  - Configurable notification preferences
 
 ### 🚧 Planned
-- **Email Notifications** via Nodemailer  
 - **Push Notifications** with Web Push API  
 - **Progressive Web App (PWA)** support  
-- **Advanced Reminder System** (custom schedules, recurring)  
+- **Advanced Reminder System** (custom schedules beyond current options)  
 - **Medical Records** upload & history tracking  
 - **Doctor/Hospital Directory** (search, profiles, services)  
 - **Quick-Med Delivery** — under 20‑minute medicine delivery shop  
-- **Emergency Ambulance Booking** — 10‑minute arrival guarantee  
 - **Hospital Bed Availability** — real‑time records of empty beds  
 - **Treatment Directory** — list of all treatments available in hospitals  
 - **Doctor Directory & Booking** — details of all doctors with appointment booking option
@@ -94,6 +102,9 @@
 - JWT (JSON Web Tokens)  
 - bcryptjs  
 - express-session & cookie-parser
+
+**Communication**  
+- SendGrid API (Email notifications)  
 
 **Utilities**  
 - dotenv  
@@ -170,26 +181,30 @@ ResQ/
 ## 🔌 API Endpoints
 
 ### Auth
-- `POST /api/auth/signup` — Register a new user  
-- `POST /api/auth/login` — Login
+- `POST /api/auth/signup` — Register a new user  
+- `POST /api/auth/login` — Login
 
 ### Reminders
-- `GET /api/reminders` — List all reminders  
-- `POST /api/reminders` — Create reminder  
-- `PUT /api/reminders/:id` — Update reminder  
-- `DELETE /api/reminders/:id` — Delete reminder
+- `GET /api/reminders` — List all reminders  
+- `POST /api/reminders` — Create reminder  
+- `PUT /api/reminders/:id` — Update reminder  
+- `DELETE /api/reminders/:id` — Delete reminder
 
 ### Appointments
-- `GET /api/appointments` — List all appointments  
-- `POST /api/appointments` — Schedule appointment  
-- `PUT /api/appointments/:id` — Update appointment  
-- `DELETE /api/appointments/:id` — Cancel appointment
+- `GET /api/appointments` — List all appointments  
+- `POST /api/appointments` — Schedule appointment  
+- `PUT /api/appointments/:id` — Update appointment  
+- `DELETE /api/appointments/:id` — Cancel appointment
+
+### Email Notifications
+- `POST /api/reminders/test-email` — Send test email to verify email configuration
+
+### Ambulance Services
+- `GET /api/ambulance` — Get available ambulances
+- `POST /api/ambulance/book` — Book an ambulance
+- `GET /api/ambulance/track/:id` — Track ambulance location
 
 ---
-
-
-
-
 
 <h2>🧑‍💻 Author</h2>
 
