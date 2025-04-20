@@ -26,6 +26,10 @@ mongoose.connect(process.env.MONGODB_URI, {
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
+      
+      // Start the reminder scheduler
+      const reminderService = require('./server/services/reminderService');
+      reminderService.startScheduler();
     });
   })
   .catch(err => {
@@ -100,19 +104,34 @@ app.get('/sign-up', (req, res) => {
   });
 });
 
-  app.get('/med-reminder', (req, res) => {
-    res.render('med-reminder', { 
-      title: 'Med Reminder | ResQ',
-      page: 'med-reminder'
-    });
+app.get('/med-reminder', (req, res) => {
+  res.render('med-reminder', { 
+    title: 'Med Reminder | ResQ',
+    page: 'med-reminder'
   });
+});
 
-  app.get('/appointment', (req, res) => {
-    res.render('appointment', { 
-      title: 'Appointment | ResQ',
-      page: 'appointment'
-    });
+app.get('/appointment', (req, res) => {
+  res.render('appointment', { 
+    title: 'Appointment | ResQ',
+    page: 'appointment'
   });
+});
+
+app.get('/ambulance', (req, res) => {
+  res.render('ambulance', { 
+    title: 'Book Ambulance | ResQ',
+    page: 'ambulance'
+  });
+});
+
+app.get('/track-ambulance', (req, res) => {
+  res.render('track-ambulance', { 
+    title: 'Track Ambulance | ResQ',
+    page: 'ambulance' // Keep 'ambulance' to maintain nav highlighting
+  });
+});
+
 // Route directly to the auth routes for the logout page
 app.get('/logout', (req, res) => {
   req.session.destroy((err) => {
@@ -128,14 +147,10 @@ const reminderRoutes = require('./server/routes/reminderRoutes');
 const authRoutes = require('./server/routes/authRoutes');
 const appointmentRoutes = require('./server/routes/appointmentRoutes');
 const medicationRoutes = require('./server/routes/medicationRoutes');
+const ambulanceRoutes = require('./server/routes/ambulanceRoutes');
 
 app.use('/api/reminders', reminderRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/medications', medicationRoutes);
-
-// Server setup
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-}); 
+app.use('/api/ambulance', ambulanceRoutes); 

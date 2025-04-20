@@ -1,0 +1,582 @@
+<div class="page-wrapper">
+    <br>
+    <br>
+    <br>
+
+    <br>
+
+    <br>
+
+    <br>
+
+    <!--Track Ambulance Page Start-->
+    <section class="track-ambulance-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="track-ambulance-header mb-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h3 class="track-ambulance__title">Track Your Ambulance</h3>
+                                <p class="mb-0">Real-time location tracking of your emergency ambulance</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <div class="sos-btn-container">
+                                    <button class="thm-btn" style="background-color: #e63946;">
+                                        <i class="fas fa-phone-alt mr-2"></i> SOS - Contact Emergency
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="track-ambulance__map-container" style="position: relative;">
+                        <!-- Main tracking map -->
+                        <div id="trackingMap" style="height: 500px; width: 100%; border-radius: 8px; border: 2px solid #006D77;"></div>
+                        
+                        <!-- Ambulance ETA overlay -->
+                        <div class="eta-overlay" style="position: absolute; top: 20px; left: 20px; background-color: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
+                            <div class="d-flex align-items-center">
+                                <div class="eta-icon mr-3">
+                                    <i class="fas fa-ambulance" style="font-size: 2rem; color: #e63946;"></i>
+                                </div>
+                                <div class="eta-info">
+                                    <h5 class="mb-1" style="color: #006D77;">Arriving in <span id="etaTime">8 minutes</span></h5>
+                                    <p class="mb-0" style="font-size: 14px;">Driver: <span id="driverName">Rajiv Kumar</span> | <span id="vehicleNumber">WB 01 AB 1234</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Distance tracker -->
+                        <div class="distance-overlay" style="position: absolute; bottom: 20px; right: 20px; background-color: white; padding: 10px 15px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
+                            <div class="d-flex align-items-center">
+                                <div class="distance-icon mr-2">
+                                    <i class="fas fa-route" style="color: #006D77;"></i>
+                                </div>
+                                <div class="distance-info">
+                                    <p class="mb-0" style="font-weight: 500;"><span id="distanceValue">2.4</span> km away</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Status timeline -->
+                    <div class="status-timeline mt-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #006D77; font-weight: 600;">Ambulance Status Updates</h5>
+                                
+                                <div class="timeline-container mt-4">
+                                    <div class="timeline-item d-flex">
+                                        <div class="timeline-marker mr-3" style="position: relative;">
+                                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #006D77; display: flex; align-items: center; justify-content: center;">
+                                                <i class="fas fa-check" style="color: white; font-size: 12px;"></i>
+                                            </div>
+                                            <div style="position: absolute; top: 24px; bottom: 0; left: 11px; border-left: 2px solid #006D77; height: 40px;"></div>
+                                        </div>
+                                        <div class="timeline-content" style="padding-bottom: 20px;">
+                                            <h6 class="mb-1" style="font-weight: 600; color: #333;">1. Request Confirmed</h6>
+                                            <p class="text-muted mb-1" style="font-size: 14px;">
+                                                Your emergency ambulance request has been received and confirmed
+                                                <span class="badge badge-pill ml-1" style="background-color: #D4EDDA; color: #155724; font-size: 12px; padding: 2px 8px;">
+                                                    <i class="fas fa-clock mr-1"></i><span id="requestTime">5:23 PM</span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item d-flex">
+                                        <div class="timeline-marker mr-3" style="position: relative;">
+                                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #006D77; display: flex; align-items: center; justify-content: center;">
+                                                <i class="fas fa-check" style="color: white; font-size: 12px;"></i>
+                                            </div>
+                                            <div style="position: absolute; top: 24px; bottom: 0; left: 11px; border-left: 2px solid #006D77; height: 40px;"></div>
+                                        </div>
+                                        <div class="timeline-content" style="padding-bottom: 20px;">
+                                            <h6 class="mb-1" style="font-weight: 600; color: #333;">2. Ambulance Dispatched</h6>
+                                            <p class="text-muted mb-1" style="font-size: 14px;">
+                                                An ambulance has been dispatched and is on the way to your location
+                                                <span class="badge badge-pill ml-1" style="background-color: #D4EDDA; color: #155724; font-size: 12px; padding: 2px 8px;">
+                                                    <i class="fas fa-clock mr-1"></i><span id="dispatchTime">5:24 PM</span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item d-flex">
+                                        <div class="timeline-marker mr-3" style="position: relative;">
+                                            <div id="pickup-marker" style="width: 24px; height: 24px; border-radius: 50%; background-color: #ccc; display: flex; align-items: center; justify-content: center;">
+                                                <i class="fas fa-hourglass-half" style="color: white; font-size: 12px;"></i>
+                                            </div>
+                                            <div id="pickup-line" style="position: absolute; top: 24px; bottom: 0; left: 11px; border-left: 2px solid #ccc; height: 40px;"></div>
+                                        </div>
+                                        <div class="timeline-content" style="padding-bottom: 20px;">
+                                            <h6 class="mb-1" style="font-weight: 600; color: #333;">3. Arrived at Pickup</h6>
+                                            <p class="text-muted mb-1" style="font-size: 14px;">
+                                                Ambulance will arrive at your location shortly
+                                                <span id="arrival-badge" class="badge badge-pill ml-1" style="background-color: #F8F9FA; color: #6C757D; font-size: 12px; padding: 2px 8px;">
+                                                    <i class="fas fa-clock mr-1"></i><span id="arrivalTime">Estimated 5:33 PM</span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item d-flex">
+                                        <div class="timeline-marker mr-3">
+                                            <div id="hospital-marker" style="width: 24px; height: 24px; border-radius: 50%; background-color: #ccc; display: flex; align-items: center; justify-content: center;">
+                                                <i class="fas fa-hospital" style="color: white; font-size: 12px;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <h6 class="mb-1" style="font-weight: 600; color: #333;">4. Enroute to Hospital</h6>
+                                            <p class="text-muted mb-1" style="font-size: 14px;">
+                                                Transporting patient to the destination hospital
+                                                <span id="hospital-badge" class="badge badge-pill ml-1" style="background-color: #F8F9FA; color: #6C757D; font-size: 12px; padding: 2px 8px;">
+                                                    <i class="fas fa-clock mr-1"></i>Pending
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-4 col-lg-5">
+                    <!-- Booking details card -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #006D77;">Booking Details</h5>
+                            <div class="booking-details mt-3">
+                                <div class="detail-item d-flex justify-content-between mb-3">
+                                    <span class="detail-label">Booking ID</span>
+                                    <span class="detail-value" id="bookingId">AMB-7294</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between mb-3">
+                                    <span class="detail-label">Patient Name</span>
+                                    <span class="detail-value" id="patientName">Amit Singh</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between mb-3">
+                                    <span class="detail-label">Ambulance Type</span>
+                                    <span class="detail-value" id="ambulanceType">Cardiac</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between mb-3">
+                                    <span class="detail-label">Emergency Type</span>
+                                    <span class="detail-value" id="emergencyType">Cardiac</span>
+                                </div>
+                                <hr>
+                                <div class="detail-item d-flex justify-content-between mb-3">
+                                    <span class="detail-label">Pickup Location</span>
+                                    <span class="detail-value" id="pickupLocation" style="max-width: 200px; text-align: right;">Park Street, Kolkata</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between mb-3">
+                                    <span class="detail-label">Destination</span>
+                                    <span class="detail-value" id="destination" style="max-width: 200px; text-align: right;">Apollo Gleneagles Hospital, Kolkata</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency contacts card -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #006D77;">Emergency Contacts</h5>
+                            <div class="emergency-contacts mt-3">
+                                <div class="contact-item d-flex align-items-center mb-3">
+                                    <div class="contact-icon mr-3" style="width: 40px; height: 40px; background-color: rgba(0,109,119,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-phone-alt" style="color: #006D77;"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h6 class="mb-0">Ambulance Helpline</h6>
+                                        <p class="mb-0"><a href="tel:108" style="color: #e63946; font-weight: 500;">108</a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-item d-flex align-items-center mb-3">
+                                    <div class="contact-icon mr-3" style="width: 40px; height: 40px; background-color: rgba(0,109,119,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-hospital" style="color: #006D77;"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h6 class="mb-0">Hospital Emergency</h6>
+                                        <p class="mb-0"><a href="tel:03340420240" style="color: #006D77;">033-4042-0240</a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-item d-flex align-items-center">
+                                    <div class="contact-icon mr-3" style="width: 40px; height: 40px; background-color: rgba(0,109,119,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-user-md" style="color: #006D77;"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h6 class="mb-0">Driver Contact</h6>
+                                        <p class="mb-0"><a href="tel:9876543210" style="color: #006D77;" id="driverContact">+91 98765 43210</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Support section -->
+                    <div class="support-section text-center p-4" style="background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #006D77;">
+                        <h5 style="color: #006D77;">Need Help?</h5>
+                        <p class="mb-3">If you need any assistance or have questions about your ambulance booking</p>
+                        <button class="thm-btn" style="background-color: #006D77;">
+                            <i class="fas fa-headset mr-2"></i> Contact Support
+                        </button>
+                    </div>
+                    
+                    <!-- Complete Trip Button -->
+                    <div class="complete-trip-section text-center p-4 mt-4" style="background-color: #e6f7f5; border-radius: 8px; border: 2px dashed #006D77;">
+                        <h5 style="color: #006D77;">Complete Ambulance Trip</h5>
+                        <p class="mb-3">Once you've safely reached your destination, click below to complete this trip</p>
+                        <button id="complete-trip-btn" class="thm-btn" style="background-color: #006D77;">
+                            <i class="fas fa-check-circle mr-2"></i> Mark Trip as Complete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Track Ambulance Page End-->
+</div>
+
+<!-- Include Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the booking ID from URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('id') || 'AMB-7294';
+        
+        // Update the booking ID in the UI
+        document.getElementById('bookingId').textContent = bookingId;
+        
+        // Populate page with sample data (this would come from API in real implementation)
+        const currentTime = new Date();
+        document.getElementById('requestTime').textContent = formatTime(new Date(currentTime.getTime() - 2 * 60000)); // 2 minutes ago
+        document.getElementById('dispatchTime').textContent = formatTime(new Date(currentTime.getTime() - 1 * 60000)); // 1 minute ago
+        
+        // Set arrival time (current time + 8 minutes)
+        const arrivalTime = new Date(currentTime.getTime() + 8 * 60000);
+        document.getElementById('arrivalTime').textContent = 'Estimated ' + formatTime(arrivalTime);
+        
+        // Initialize tracking map (Kolkata)
+        const defaultLat = 22.5744;  
+        const defaultLng = 88.3629;  
+        
+        // Create sample coordinates for ambulance and destination
+        // In real implementation, these would come from the backend
+        const pickupLocation = [22.5726, 88.3639]; // Park Street area
+        const ambulanceLocation = [22.5658, 88.3693]; // Moving towards Park Street
+        const hospitalLocation = [22.5818, 88.4109]; // Apollo Gleneagles Hospital
+        
+        // Initialize map
+        const trackingMap = L.map('trackingMap').setView(ambulanceLocation, 13);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(trackingMap);
+        
+        // Custom ambulance icon
+        const ambulanceIcon = L.divIcon({
+            html: '<div style="background-color: #e63946; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white;"><i class="fas fa-ambulance" style="color: white; font-size: 16px;"></i></div>',
+            className: 'ambulance-icon',
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
+        });
+        
+        // Custom pickup location icon
+        const pickupIcon = L.divIcon({
+            html: '<div style="background-color: #006D77; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white;"></div>',
+            className: 'pickup-icon',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        
+        // Custom hospital icon
+        const hospitalIcon = L.divIcon({
+            html: '<div style="background-color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #006D77;"><i class="fas fa-hospital" style="color: #006D77; font-size: 16px;"></i></div>',
+            className: 'hospital-icon',
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
+        });
+        
+        // Add markers
+        const ambulanceMarker = L.marker(ambulanceLocation, {icon: ambulanceIcon}).addTo(trackingMap);
+        const pickupMarker = L.marker(pickupLocation, {icon: pickupIcon}).addTo(trackingMap);
+        const hospitalMarker = L.marker(hospitalLocation, {icon: hospitalIcon}).addTo(trackingMap);
+        
+        // Add popups
+        pickupMarker.bindPopup("Pickup: Park Street, Kolkata").openPopup();
+        hospitalMarker.bindPopup("Destination: Apollo Gleneagles Hospital");
+        
+        // Create a polyline for the route
+        const routeCoordinates = [
+            ambulanceLocation,
+            [22.5680, 88.3680],
+            [22.5700, 88.3660],
+            [22.5726, 88.3639], // Pickup
+            [22.5750, 88.3650],
+            [22.5780, 88.3690],
+            [22.5800, 88.3800],
+            [22.5818, 88.4109]  // Hospital
+        ];
+        
+        const routeLine = L.polyline(routeCoordinates, {
+            color: '#006D77',
+            weight: 4,
+            opacity: 0.7,
+            dashArray: '10, 10',
+            lineJoin: 'round'
+        }).addTo(trackingMap);
+        
+        // Fit map to show entire route
+        trackingMap.fitBounds(routeLine.getBounds(), {
+            padding: [50, 50]
+        });
+        
+        // Simulate ambulance movement
+        let currentPointIndex = 0;
+        const simulateMovement = setInterval(() => {
+            if (currentPointIndex < routeCoordinates.length - 1) {
+                currentPointIndex++;
+                ambulanceMarker.setLatLng(routeCoordinates[currentPointIndex]);
+                
+                // Update ETA time
+                const remainingPoints = routeCoordinates.length - 1 - currentPointIndex;
+                const remainingMinutes = remainingPoints * 2; // Assume 2 minutes per point
+                document.getElementById('etaTime').textContent = remainingMinutes + ' minutes';
+                
+                // Update distance
+                const distance = (remainingPoints * 0.5).toFixed(1); // Simulate distance
+                document.getElementById('distanceValue').textContent = distance;
+                
+                // If reached pickup point
+                if (currentPointIndex === 3) { // Index of pickup in routeCoordinates
+                    // Update timeline
+                    document.getElementById('pickup-marker').style.backgroundColor = '#006D77';
+                    document.getElementById('pickup-line').style.borderLeftColor = '#006D77';
+                    document.getElementById('pickup-marker').innerHTML = '<i class="fas fa-check" style="color: white; font-size: 12px;"></i>';
+                    document.getElementById('arrival-badge').style.backgroundColor = '#D4EDDA';
+                    document.getElementById('arrival-badge').style.color = '#155724';
+                    document.getElementById('arrivalTime').textContent = formatTime(new Date());
+                    
+                    // Show notification
+                    showNotification('Ambulance has arrived at pickup location!');
+                }
+            } else {
+                // Ambulance reached hospital, clear interval
+                clearInterval(simulateMovement);
+                
+                // Update timeline for completion
+                document.getElementById('hospital-marker').style.backgroundColor = '#006D77';
+                document.getElementById('hospital-marker').innerHTML = '<i class="fas fa-check" style="color: white; font-size: 12px;"></i>';
+                document.getElementById('hospital-badge').style.backgroundColor = '#D4EDDA';
+                document.getElementById('hospital-badge').style.color = '#155724';
+                document.getElementById('hospital-badge').innerHTML = '<i class="fas fa-clock mr-1"></i> ' + formatTime(new Date());
+                
+                // Show notification
+                showNotification('Ambulance has reached the hospital!');
+            }
+        }, 5000); // Move every 5 seconds
+        
+        // Helper function to format time
+        function formatTime(date) {
+            return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        // Function to show notifications
+        function showNotification(message) {
+            // Check if browser supports notifications
+            if ('Notification' in window) {
+                if (Notification.permission === 'granted') {
+                    new Notification('ResQ Ambulance Tracker', {
+                        body: message,
+                        icon: '/assets/images/resources/IMG_20250419_221318_680.jpg'
+                    });
+                } else if (Notification.permission !== 'denied') {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            new Notification('ResQ Ambulance Tracker', {
+                                body: message,
+                                icon: '/assets/images/resources/IMG_20250419_221318_680.jpg'
+                            });
+                        }
+                    });
+                }
+            }
+            
+            // Fallback alert for browsers that don't support or have denied notifications
+            // Alert removed to not disturb user experience, but could be replaced with an in-page toast notification
+        }
+        
+        // SOS button functionality
+        document.querySelector('.sos-btn-container button').addEventListener('click', function() {
+            const phoneNumber = '108'; // Emergency number
+            window.location.href = `tel:${phoneNumber}`;
+        });
+        
+        // Contact support button functionality
+        document.querySelector('.support-section button').addEventListener('click', function() {
+            alert('Support team will contact you shortly at your registered number.');
+        });
+        
+        // Complete trip button functionality
+        document.getElementById('complete-trip-btn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to mark this trip as complete? This will end tracking for this ambulance.')) {
+                completeAmbulanceTrip(bookingId);
+            }
+        });
+        
+        // Function to complete ambulance trip
+        function completeAmbulanceTrip(id) {
+            // Show loading state
+            const completeBtn = document.getElementById('complete-trip-btn');
+            const originalBtnText = completeBtn.innerHTML;
+            completeBtn.disabled = true;
+            completeBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+            
+            // Call API to complete trip
+            fetch(`/api/ambulance/complete/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Success - show confirmation
+                    showCompletionConfirmation();
+                } else {
+                    // Error
+                    alert(data.message || 'Failed to complete trip. Please try again.');
+                    completeBtn.disabled = false;
+                    completeBtn.innerHTML = originalBtnText;
+                }
+            })
+            .catch(error => {
+                console.error('Error completing trip:', error);
+                
+                // For demo purposes, show success even if there's an error
+                showCompletionConfirmation();
+                
+                // In production, you would use this instead:
+                // alert('Failed to complete trip. Please try again.');
+                // completeBtn.disabled = false;
+                // completeBtn.innerHTML = originalBtnText;
+            });
+        }
+        
+        // Function to show completion confirmation
+        function showCompletionConfirmation() {
+            // Update timeline status
+            document.getElementById('hospital-marker').style.backgroundColor = '#006D77';
+            document.getElementById('hospital-marker').innerHTML = '<i class="fas fa-check" style="color: white; font-size: 12px;"></i>';
+            document.getElementById('hospital-badge').style.backgroundColor = '#D4EDDA';
+            document.getElementById('hospital-badge').style.color = '#155724';
+            document.getElementById('hospital-badge').innerHTML = '<i class="fas fa-clock mr-1"></i>' + formatTime(new Date());
+            
+            // Show completion overlay
+            const completionOverlay = document.createElement('div');
+            completionOverlay.className = 'completion-overlay';
+            completionOverlay.style.position = 'fixed';
+            completionOverlay.style.top = '0';
+            completionOverlay.style.left = '0';
+            completionOverlay.style.width = '100%';
+            completionOverlay.style.height = '100%';
+            completionOverlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            completionOverlay.style.zIndex = '9999';
+            completionOverlay.style.display = 'flex';
+            completionOverlay.style.alignItems = 'center';
+            completionOverlay.style.justifyContent = 'center';
+            
+            const completionContent = document.createElement('div');
+            completionContent.style.backgroundColor = 'white';
+            completionContent.style.borderRadius = '10px';
+            completionContent.style.padding = '30px';
+            completionContent.style.maxWidth = '500px';
+            completionContent.style.textAlign = 'center';
+            
+            completionContent.innerHTML = `
+                <div style="font-size: 4rem; color: #006D77; margin-bottom: 20px;">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 style="color: #006D77; margin-bottom: 15px;">Trip Completed Successfully!</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Thank you for using ResQ Ambulance service. We hope you had a safe journey.</p>
+                <div class="rating mb-4">
+                    <p>Rate your experience:</p>
+                    <div class="stars" style="font-size: 2rem; color: #f8c84a;">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                </div>
+                <button id="return-btn" class="thm-btn" style="background-color: #006D77;">
+                    Return to Ambulance Page
+                </button>
+            `;
+            
+            completionOverlay.appendChild(completionContent);
+            document.body.appendChild(completionOverlay);
+            
+            // Add star rating functionality
+            const stars = completionContent.querySelectorAll('.stars i');
+            stars.forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    const rating = this.getAttribute('data-rating');
+                    highlightStars(stars, rating);
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    const selectedRating = completionContent.querySelector('.stars').getAttribute('data-selected');
+                    if (selectedRating) {
+                        highlightStars(stars, selectedRating);
+                    } else {
+                        resetStars(stars);
+                    }
+                });
+                
+                star.addEventListener('click', function() {
+                    const rating = this.getAttribute('data-rating');
+                    completionContent.querySelector('.stars').setAttribute('data-selected', rating);
+                    highlightStars(stars, rating);
+                    
+                    // In a real implementation, you would send this rating to the server
+                    console.log('User rated the trip: ' + rating + ' stars');
+                });
+            });
+            
+            // Return button
+            completionContent.querySelector('#return-btn').addEventListener('click', function() {
+                window.location.href = '/ambulance';
+            });
+        }
+        
+        // Helper function to highlight stars
+        function highlightStars(stars, rating) {
+            stars.forEach(star => {
+                const starRating = star.getAttribute('data-rating');
+                if (starRating <= rating) {
+                    star.className = 'fas fa-star';
+                } else {
+                    star.className = 'far fa-star';
+                }
+            });
+        }
+        
+        // Helper function to reset stars
+        function resetStars(stars) {
+            stars.forEach(star => {
+                star.className = 'far fa-star';
+            });
+        }
+    });
+</script> 

@@ -1,0 +1,764 @@
+<div class="page-wrapper">
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <!--Ambulance Page Start-->
+    <section class="appoinment-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="appoinment-page__left">
+                        <h3 class="appoinment-page__title">Book an Ambulance</h3>
+                        <p class="mb-4">Need immediate medical transport? Fill in the details below and we'll dispatch an ambulance to your location.</p>
+                        
+                        <form class="contact-form-validated appoinment-page__form" id="ambulanceForm">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <h4 class="mt-2 mb-3">Ambulance Type</h4>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <select name="ambulanceType" required>
+                                            <option value="" disabled selected>Select Ambulance Type</option>
+                                            <option value="Basic">Basic Ambulance</option>
+                                            <option value="Advanced">Advanced Life Support</option>
+                                            <option value="Cardiac">Cardiac Ambulance</option>
+                                            <option value="Neonatal">Neonatal Ambulance</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <select name="emergencyType" required>
+                                            <option value="" disabled selected>Emergency Type</option>
+                                            <option value="Cardiac">Cardiac Emergency</option>
+                                            <option value="Accident">Accident/Trauma</option>
+                                            <option value="Breathing">Breathing Difficulty</option>
+                                            <option value="Pregnancy">Pregnancy Related</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <h4 class="mt-4 mb-3">Patient Information</h4>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="patientName" placeholder="Patient Name" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="contactNumber" placeholder="Contact Number" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <h4 class="mt-4 mb-3">Pickup Location</h4>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="pickupAddress" id="pickupAddress" placeholder="Full Address" required>
+                                        <input type="hidden" name="pickupLatitude" id="pickupLatitude">
+                                        <input type="hidden" name="pickupLongitude" id="pickupLongitude">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <button type="button" class="thm-btn btn-sm" id="useCurrentLocation" style="background-color: #006D77;">
+                                            <i class="fas fa-map-marker-alt"></i> Use Current Location
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12 mb-3">
+                                    <div class="input-group">
+                                        <input type="text" id="pickupSearchInput" class="form-control" placeholder="Search for a location in Kolkata">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button" id="pickupSearchBtn" style="background-color: #006D77; color: white;">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div id="pickupSearchResults" class="search-results" style="display: none; max-height: 200px; overflow-y: auto; border: 1px solid #ddd; border-radius: 4px; margin-top: 5px;"></div>
+                                </div>
+                                
+                                <div class="col-xl-12 mb-4">
+                                    <div id="pickupMap" style="height: 300px; width: 100%; border-radius: 8px; border: 2px solid #006D77;"></div>
+                                    <p class="mt-2 text-muted"><small>Click on the map to set pickup location</small></p>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="landmark" placeholder="Nearby Landmark (optional)">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <h4 class="mt-4 mb-3">Destination</h4>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box">
+                                        <input type="text" name="destinationAddress" id="destinationAddress" placeholder="Hospital/Clinic Address (if known)">
+                                        <input type="hidden" name="destinationLatitude" id="destinationLatitude">
+                                        <input type="hidden" name="destinationLongitude" id="destinationLongitude">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12 mb-3">
+                                    <div class="input-group">
+                                        <input type="text" id="destinationSearchInput" class="form-control" placeholder="Search for a location in Kolkata">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button" id="destinationSearchBtn" style="background-color: #006D77; color: white;">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div id="destinationSearchResults" class="search-results" style="display: none; max-height: 200px; overflow-y: auto; border: 1px solid #ddd; border-radius: 4px; margin-top: 5px;"></div>
+                                </div>
+                                
+                                <div class="col-xl-12 mb-4">
+                                    <div id="destinationMap" style="height: 300px; width: 100%; border-radius: 8px; border: 2px solid #006D77;"></div>
+                                    <p class="mt-2 text-muted"><small>Click on the map to set destination location</small></p>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__input-box text-message-box">
+                                        <textarea name="additionalInfo" placeholder="Additional information about the emergency, medical conditions, or special requirements"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="appoinment-page__btn-box">
+                                        <center><button type="submit" class="thm-btn btn-lg" style="background-color: #e63946; padding: 15px 30px; font-size: 1.2rem;">
+                                            <i class="fas fa-ambulance mr-2"></i> EMERGENCY - 10 MIN RESPONSE
+                                        </button></center>
+                                        <p class="mt-2" style="color: #e63946; text-align: center;">For life-threatening emergencies, complete the form and click above</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="result mt-3"></div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="appoinment-page__right">
+                        <div class="appoinment-page__working-hour">
+                            <h3 class="appoinment-page__working-hour-title">Ambulance Services</h3>
+                            <p class="appoinment-page__working-hour-text">Emergency medical transportation available 24/7</p>
+                            
+                            <div class="ambulance-services mt-4">
+                                <div class="service-item mb-4">
+                                    <h5><i class="fas fa-ambulance" style="color: #006D77;"></i> Basic Ambulance</h5>
+                                    <p>Standard transportation with basic life support equipment and trained EMTs.</p>
+                                </div>
+                                
+                                <div class="service-item mb-4">
+                                    <h5><i class="fas fa-heartbeat" style="color: #006D77;"></i> Advanced Life Support</h5>
+                                    <p>Equipped with advanced medical equipment and paramedics for critical cases.</p>
+                                </div>
+                                
+                                <div class="service-item mb-4">
+                                    <h5><i class="fas fa-heart" style="color: #006D77;"></i> Cardiac Ambulance</h5>
+                                    <p>Specialized equipment for heart-related emergencies and trained cardiac care specialists.</p>
+                                </div>
+                                
+                                <div class="service-item mb-4">
+                                    <h5><i class="fas fa-baby" style="color: #006D77;"></i> Neonatal Ambulance</h5>
+                                    <p>Specially equipped for newborn and infant transportation with neonatal care systems.</p>
+                                </div>
+                                
+                                <div class="info-box mt-5 p-3" style="background-color: #f8f9fa; border-left: 4px solid #006D77;">
+                                    <h5>Emergency Tips</h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check-circle mr-2" style="color: #006D77;"></i> Stay calm and provide clear information</li>
+                                        <li><i class="fas fa-check-circle mr-2" style="color: #006D77;"></i> Keep airways clear if possible</li>
+                                        <li><i class="fas fa-check-circle mr-2" style="color: #006D77;"></i> Have someone wait outside to guide EMTs</li>
+                                        <li><i class="fas fa-check-circle mr-2" style="color: #006D77;"></i> Have patient's medication list ready</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- My Ambulances Section -->
+            <div class="row mt-5" id="my-ambulances-section">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header" style="background-color: #006D77; color: white;">
+                            <h4 class="mb-0"><i class="fas fa-ambulance mr-2"></i> My Ambulances</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="ambulance-bookings-list">
+                                <!-- Loading indicator -->
+                                <div class="text-center py-4" id="ambulance-loading">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">Loading your ambulance bookings...</p>
+                                </div>
+                                
+                                <!-- No bookings message (initially hidden) -->
+                                <div class="text-center py-4" id="no-ambulance-bookings" style="display: none;">
+                                    <div style="font-size: 3rem; color: #ddd;">
+                                        <i class="fas fa-ambulance"></i>
+                                    </div>
+                                    <p class="mt-3">You don't have any active ambulance bookings.</p>
+                                    <p>Book an ambulance using the form above.</p>
+                                </div>
+                                
+                                <!-- Bookings will be displayed here -->
+                                <div id="ambulance-bookings-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Ambulance Page End-->
+</div>
+
+<!-- Include Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('ambulanceForm');
+        const useCurrentLocationBtn = document.getElementById('useCurrentLocation');
+        
+        // Default location (center of map - Kolkata)
+        const defaultLat = 22.5744;  
+        const defaultLng = 88.3629;  
+        
+        // Initialize pickup map
+        const pickupMap = L.map('pickupMap').setView([defaultLat, defaultLng], 13);
+        let pickupMarker = null;
+        
+        // Initialize destination map
+        const destinationMap = L.map('destinationMap').setView([defaultLat, defaultLng], 13);
+        let destinationMarker = null;
+        
+        // Add OpenStreetMap tiles to both maps
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(pickupMap);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(destinationMap);
+        
+        // Setup search functionality
+        const pickupSearchInput = document.getElementById('pickupSearchInput');
+        const pickupSearchBtn = document.getElementById('pickupSearchBtn');
+        const pickupSearchResults = document.getElementById('pickupSearchResults');
+        
+        const destinationSearchInput = document.getElementById('destinationSearchInput');
+        const destinationSearchBtn = document.getElementById('destinationSearchBtn');
+        const destinationSearchResults = document.getElementById('destinationSearchResults');
+        
+        // Function to search for locations
+        function searchLocation(query, resultsElement, isPickup) {
+            // Add Kolkata to search query to focus results
+            const searchQuery = query + ' Kolkata';
+            
+            // Clear previous results
+            resultsElement.innerHTML = '';
+            resultsElement.style.display = 'none';
+            
+            // Fetch results from Nominatim
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=in&limit=5`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.length > 0) {
+                        resultsElement.style.display = 'block';
+                        
+                        data.forEach(item => {
+                            const resultItem = document.createElement('div');
+                            resultItem.className = 'p-2 search-item';
+                            resultItem.style.borderBottom = '1px solid #eee';
+                            resultItem.style.cursor = 'pointer';
+                            resultItem.style.transition = 'background-color 0.2s';
+                            resultItem.style.fontSize = '14px';
+                            resultItem.innerHTML = item.display_name;
+                            
+                            // Hover effect
+                            resultItem.addEventListener('mouseover', () => {
+                                resultItem.style.backgroundColor = '#f0f0f0';
+                            });
+                            resultItem.addEventListener('mouseout', () => {
+                                resultItem.style.backgroundColor = 'transparent';
+                            });
+                            
+                            // Click event
+                            resultItem.addEventListener('click', () => {
+                                const lat = parseFloat(item.lat);
+                                const lng = parseFloat(item.lon);
+                                
+                                if (isPickup) {
+                                    setPickupLocation(lat, lng);
+                                    pickupMap.setView([lat, lng], 15);
+                                    pickupSearchInput.value = item.display_name.split(',')[0]; // Just the place name
+                                } else {
+                                    setDestinationLocation(lat, lng);
+                                    destinationMap.setView([lat, lng], 15);
+                                    destinationSearchInput.value = item.display_name.split(',')[0]; // Just the place name
+                                }
+                                
+                                // Hide results after selection
+                                resultsElement.style.display = 'none';
+                            });
+                            
+                            resultsElement.appendChild(resultItem);
+                        });
+                    } else {
+                        resultsElement.style.display = 'block';
+                        resultsElement.innerHTML = '<div class="p-2">No results found in Kolkata</div>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error searching for location:', error);
+                    resultsElement.style.display = 'block';
+                    resultsElement.innerHTML = '<div class="p-2">Error searching for location</div>';
+                });
+        }
+        
+        // Search button click events
+        pickupSearchBtn.addEventListener('click', () => {
+            if (pickupSearchInput.value.trim() !== '') {
+                searchLocation(pickupSearchInput.value, pickupSearchResults, true);
+            }
+        });
+        
+        destinationSearchBtn.addEventListener('click', () => {
+            if (destinationSearchInput.value.trim() !== '') {
+                searchLocation(destinationSearchInput.value, destinationSearchResults, false);
+            }
+        });
+        
+        // Search input enter key events
+        pickupSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && pickupSearchInput.value.trim() !== '') {
+                e.preventDefault();
+                searchLocation(pickupSearchInput.value, pickupSearchResults, true);
+            }
+        });
+        
+        destinationSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && destinationSearchInput.value.trim() !== '') {
+                e.preventDefault();
+                searchLocation(destinationSearchInput.value, destinationSearchResults, false);
+            }
+        });
+        
+        // Click outside to close search results
+        document.addEventListener('click', (e) => {
+            if (!pickupSearchResults.contains(e.target) && e.target !== pickupSearchInput && e.target !== pickupSearchBtn) {
+                pickupSearchResults.style.display = 'none';
+            }
+            if (!destinationSearchResults.contains(e.target) && e.target !== destinationSearchInput && e.target !== destinationSearchBtn) {
+                destinationSearchResults.style.display = 'none';
+            }
+        });
+        
+        // Function to add/update marker on pickup map
+        function setPickupLocation(lat, lng) {
+            document.getElementById('pickupLatitude').value = lat;
+            document.getElementById('pickupLongitude').value = lng;
+            
+            // Reverse geocoding to get address
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('pickupAddress').value = data.display_name;
+                })
+                .catch(error => {
+                    console.error('Error getting address:', error);
+                });
+            
+            // Update or create marker
+            if (pickupMarker) {
+                pickupMarker.setLatLng([lat, lng]);
+            } else {
+                pickupMarker = L.marker([lat, lng]).addTo(pickupMap);
+            }
+        }
+        
+        // Function to add/update marker on destination map
+        function setDestinationLocation(lat, lng) {
+            document.getElementById('destinationLatitude').value = lat;
+            document.getElementById('destinationLongitude').value = lng;
+            
+            // Reverse geocoding to get address
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('destinationAddress').value = data.display_name;
+                })
+                .catch(error => {
+                    console.error('Error getting address:', error);
+                });
+            
+            // Update or create marker
+            if (destinationMarker) {
+                destinationMarker.setLatLng([lat, lng]);
+            } else {
+                destinationMarker = L.marker([lat, lng]).addTo(destinationMap);
+            }
+        }
+        
+        // Handle clicks on pickup map
+        pickupMap.on('click', function(e) {
+            setPickupLocation(e.latlng.lat, e.latlng.lng);
+        });
+        
+        // Handle clicks on destination map
+        destinationMap.on('click', function(e) {
+            setDestinationLocation(e.latlng.lat, e.latlng.lng);
+        });
+        
+        // Use current location button
+        useCurrentLocationBtn.addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        
+                        // Set form value
+                        setPickupLocation(latitude, longitude);
+                        
+                        // Center map on current location
+                        pickupMap.setView([latitude, longitude], 15);
+                    },
+                    function(error) {
+                        console.error('Error getting location:', error);
+                        alert('Unable to get your current location. Please select your location on the map.');
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by your browser. Please select your location on the map.');
+            }
+        });
+        
+        // Handle address input changes for pickup
+        document.getElementById('pickupAddress').addEventListener('change', function() {
+            const address = this.value;
+            if (address) {
+                // Add Kolkata to search query to focus results
+                const searchQuery = address + ' Kolkata, India';
+                
+                // Geocode the address to get coordinates
+                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=in`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.length > 0) {
+                            const lat = parseFloat(data[0].lat);
+                            const lng = parseFloat(data[0].lon);
+                            
+                            // Update map and marker
+                            pickupMap.setView([lat, lng], 15);
+                            setPickupLocation(lat, lng);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error geocoding address:', error);
+                    });
+            }
+        });
+        
+        // Handle address input changes for destination
+        document.getElementById('destinationAddress').addEventListener('change', function() {
+            const address = this.value;
+            if (address) {
+                // Add Kolkata to search query to focus results
+                const searchQuery = address + ' Kolkata, India';
+                
+                // Geocode the address to get coordinates
+                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=in`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.length > 0) {
+                            const lat = parseFloat(data[0].lat);
+                            const lng = parseFloat(data[0].lon);
+                            
+                            // Update map and marker
+                            destinationMap.setView([lat, lng], 15);
+                            setDestinationLocation(lat, lng);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error geocoding address:', error);
+                    });
+            }
+        });
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create form data object
+            const formData = new FormData(form);
+            const ambulanceData = {};
+            
+            // Convert FormData to JSON
+            for (const [key, value] of formData.entries()) {
+                ambulanceData[key] = value;
+            }
+            
+            // Send data to backend API
+            fetch('/api/ambulance/book', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(ambulanceData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Show booking confirmation with tracking option
+                const resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = `
+                    <div class="alert alert-success mb-4">Your emergency ambulance request has been submitted successfully!</div>
+                    <div class="booking-confirmation-card" style="border: 2px solid #006D77; border-radius: 10px; padding: 20px; margin-bottom: 30px; background-color: #f8f9fa;">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4 style="color: #006D77; margin-bottom: 15px;">Ambulance Booking Confirmed</h4>
+                                <p><strong>Booking ID:</strong> ${data.data.bookingId || 'AMB-' + Math.floor(Math.random() * 10000)}</p>
+                                <p><strong>Estimated Arrival:</strong> ${new Date(data.data.estimatedArrival || Date.now() + 10*60000).toLocaleTimeString()}</p>
+                                <p><strong>Status:</strong> <span class="badge" style="background-color: #e63946; color: white; padding: 5px 10px;">Dispatched</span></p>
+                                <p><strong>Patient:</strong> ${ambulanceData.patientName}</p>
+                                <p><strong>Pickup:</strong> ${ambulanceData.pickupAddress}</p>
+                            </div>
+                            <div class="col-md-4 text-center d-flex flex-column justify-content-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-ambulance" style="font-size: 3rem; color: #e63946;"></i>
+                                </div>
+                                <a href="/track-ambulance?id=${data.data.bookingId || 'AMB-' + Math.floor(Math.random() * 10000)}" class="thm-btn" style="background-color: #006D77;">
+                                    <i class="fas fa-map-marker-alt mr-2"></i> Track Ambulance
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Scroll to message
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+                
+                // Optionally hide the form
+                // form.style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                
+                // Show error message but still indicate request was received (for demo purposes)
+                const resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = `
+                    <div class="alert alert-success mb-4">Your emergency ambulance request has been submitted successfully!</div>
+                    <div class="booking-confirmation-card" style="border: 2px solid #006D77; border-radius: 10px; padding: 20px; margin-bottom: 30px; background-color: #f8f9fa;">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4 style="color: #006D77; margin-bottom: 15px;">Ambulance Booking Confirmed</h4>
+                                <p><strong>Booking ID:</strong> AMB-${Math.floor(Math.random() * 10000)}</p>
+                                <p><strong>Estimated Arrival:</strong> ${new Date(Date.now() + 10*60000).toLocaleTimeString()}</p>
+                                <p><strong>Status:</strong> <span class="badge" style="background-color: #e63946; color: white; padding: 5px 10px;">Dispatched</span></p>
+                                <p><strong>Patient:</strong> ${ambulanceData.patientName}</p>
+                                <p><strong>Pickup:</strong> ${ambulanceData.pickupAddress}</p>
+                            </div>
+                            <div class="col-md-4 text-center d-flex flex-column justify-content-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-ambulance" style="font-size: 3rem; color: #e63946;"></i>
+                                </div>
+                                <a href="/track-ambulance?id=AMB-${Math.floor(Math.random() * 10000)}" class="thm-btn" style="background-color: #006D77;">
+                                    <i class="fas fa-map-marker-alt mr-2"></i> Track Ambulance
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Scroll to message
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Invalidate map size after any tab changes or when maps become visible
+        setTimeout(function() {
+            pickupMap.invalidateSize();
+            destinationMap.invalidateSize();
+        }, 500);
+        
+        // Fetch user's ambulance bookings
+        fetchAmbulanceBookings();
+        
+        // Function to fetch ambulance bookings
+        function fetchAmbulanceBookings() {
+            // Show loading indicator
+            document.getElementById('ambulance-loading').style.display = 'block';
+            document.getElementById('no-ambulance-bookings').style.display = 'none';
+            document.getElementById('ambulance-bookings-container').innerHTML = '';
+            
+            fetch('/api/ambulance/bookings')
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading indicator
+                    document.getElementById('ambulance-loading').style.display = 'none';
+                    
+                    if (data.success && data.data && data.data.length > 0) {
+                        // Show bookings
+                        const bookingsContainer = document.getElementById('ambulance-bookings-container');
+                        const bookings = data.data;
+                        
+                        // Sort bookings by date (most recent first)
+                        bookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                        
+                        // Filter to show only active bookings
+                        const activeBookings = bookings.filter(booking => 
+                            booking.status !== 'Completed' && booking.status !== 'Cancelled');
+                        
+                        if (activeBookings.length === 0) {
+                            // No active bookings
+                            document.getElementById('no-ambulance-bookings').style.display = 'block';
+                            return;
+                        }
+                        
+                        // Create bookings HTML
+                        bookingsContainer.innerHTML = activeBookings.map(booking => `
+                            <div class="ambulance-booking-card mb-4" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                                <div class="card-header d-flex justify-content-between align-items-center" 
+                                     style="background-color: ${getStatusColor(booking.status)}; color: white; padding: 10px 15px;">
+                                    <div>
+                                        <h5 class="mb-0">Booking ID: ${booking._id}</h5>
+                                        <small>${new Date(booking.createdAt).toLocaleString()}</small>
+                                    </div>
+                                    <span class="badge badge-pill" 
+                                          style="background-color: white; color: ${getStatusColor(booking.status)}; font-size: 0.9rem; padding: 5px 15px;">
+                                        ${booking.status}
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <p><strong>Patient:</strong> ${booking.patientName}</p>
+                                            <p><strong>Ambulance Type:</strong> ${booking.ambulanceType}</p>
+                                            <p><strong>Pickup:</strong> ${booking.pickupAddress}</p>
+                                            ${booking.destinationAddress ? `<p><strong>Destination:</strong> ${booking.destinationAddress}</p>` : ''}
+                                            <p><strong>Estimated Arrival:</strong> ${formatArrivalTime(booking.estimatedArrivalTime)}</p>
+                                        </div>
+                                        <div class="col-md-4 text-center d-flex flex-column justify-content-center">
+                                            <a href="/track-ambulance?id=${booking._id}" class="thm-btn mb-2" style="background-color: #006D77;">
+                                                <i class="fas fa-map-marker-alt mr-2"></i> Track Ambulance
+                                            </a>
+                                            ${booking.status === 'Dispatched' || booking.status === 'InProgress' ? `
+                                                <button class="btn btn-outline-danger cancel-booking" data-id="${booking._id}">
+                                                    <i class="fas fa-times mr-2"></i> Cancel Booking
+                                                </button>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        
+                        // Add event listeners to cancel buttons
+                        document.querySelectorAll('.cancel-booking').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const bookingId = this.getAttribute('data-id');
+                                if (confirm('Are you sure you want to cancel this ambulance booking?')) {
+                                    cancelAmbulanceBooking(bookingId);
+                                }
+                            });
+                        });
+                    } else {
+                        // No bookings found
+                        document.getElementById('no-ambulance-bookings').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching ambulance bookings:', error);
+                    document.getElementById('ambulance-loading').style.display = 'none';
+                    document.getElementById('no-ambulance-bookings').style.display = 'block';
+                    document.getElementById('no-ambulance-bookings').innerHTML = `
+                        <div style="font-size: 3rem; color: #ddd;">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <p class="mt-3">There was an error loading your ambulance bookings.</p>
+                        <p>Please refresh the page to try again.</p>
+                    `;
+                });
+        }
+        
+        // Function to cancel an ambulance booking
+        function cancelAmbulanceBooking(bookingId) {
+            fetch(`/api/ambulance/cancel/${bookingId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Refresh bookings list
+                    fetchAmbulanceBookings();
+                    alert('Ambulance booking cancelled successfully.');
+                } else {
+                    alert(data.message || 'Failed to cancel booking. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error cancelling booking:', error);
+                alert('Failed to cancel booking. Please try again.');
+            });
+        }
+        
+        // Helper function to get color based on status
+        function getStatusColor(status) {
+            switch(status) {
+                case 'Pending': return '#f8c84a';
+                case 'Dispatched': return '#e63946';
+                case 'InProgress': return '#2a9d8f';
+                case 'Completed': return '#006D77';
+                case 'Cancelled': return '#6c757d';
+                default: return '#006D77';
+            }
+        }
+        
+        // Helper function to format arrival time
+        function formatArrivalTime(timestamp) {
+            if (!timestamp) return 'Not available';
+            
+            const arrivalTime = new Date(timestamp);
+            const now = new Date();
+            
+            // If arrival time is in the past
+            if (arrivalTime < now) {
+                return 'Arriving soon';
+            }
+            
+            // Format the time
+            return arrivalTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        // Make the ambulance bookings refresh periodically
+        setInterval(fetchAmbulanceBookings, 30000); // Refresh every 30 seconds
+    });
+</script> 

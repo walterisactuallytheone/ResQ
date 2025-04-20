@@ -41,6 +41,24 @@ const appointmentSchema = new mongoose.Schema({
     reminderHour: {
       type: Boolean,
       default: true
+    },
+    reminderAtTime: {
+      type: Boolean,
+      default: true
+    }
+  },
+  emailNotifications: {
+    dayBefore: {
+      sent: { type: Boolean, default: false },
+      sentAt: Date
+    },
+    hourBefore: {
+      sent: { type: Boolean, default: false },
+      sentAt: Date
+    },
+    atTime: {
+      sent: { type: Boolean, default: false },
+      sentAt: Date
     }
   },
   createdAt: {

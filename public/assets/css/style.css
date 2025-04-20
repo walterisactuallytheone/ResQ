@@ -468,7 +468,7 @@ ul {
   animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
-  background-image: url(../images/loader.png);
+  background-image: url(../images/newkoader.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 60px auto;
@@ -2404,7 +2404,7 @@ ul {
 
 /* Logo Image Styles */
 .logo-img {
-    max-width: 70px;  /* Adjust this value to make the logo smaller or larger */
+    max-width: 50px;  /* Adjust this value to make the logo smaller or larger */
     height: auto;
     transition: all 0.3s ease;
 }

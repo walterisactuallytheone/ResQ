@@ -45,12 +45,24 @@ router.post('/', isAuthenticated, async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide all required fields' });
     }
 
+    // Get array of medication times
+    const timesArray = Array.isArray(medicationTimes) ? medicationTimes : [medicationTimes];
+    
+    // Initialize email notifications as a plain object (not Map)
+    const emailNotificationsObj = {};
+    timesArray.forEach(time => {
+      emailNotificationsObj[time] = {
+        atTimeSent: false,
+        beforeSent: false
+      };
+    });
+
     // Create new medication
     const medication = new Medication({
       medicationName,
       dosage,
       frequency,
-      medicationTimes: Array.isArray(medicationTimes) ? medicationTimes : [medicationTimes],
+      medicationTimes: timesArray,
       startDate,
       endDate: endDate || null,
       prescribedBy,
@@ -59,14 +71,28 @@ router.post('/', isAuthenticated, async (req, res) => {
       reminderPreferences: {
         reminderAtTime: reminderAtTime === 'on' || reminderAtTime === '1' || reminderAtTime === true,
         reminderBefore: reminderBefore === 'on' || reminderBefore === '1' || reminderBefore === true
-      }
+      },
+      emailNotifications: emailNotificationsObj
     });
 
     console.log('Creating medication object:', medication);
     
     await medication.save();
     console.log('Medication saved successfully with ID:', medication._id);
-    res.status(201).json({ success: true, data: medication });
+    
+    // Convert to object for proper JSON serialization
+    const medicationObj = medication.toObject();
+    
+    // If emailNotifications is still a Map, convert it to a plain object
+    if (medicationObj.emailNotifications instanceof Map) {
+      const notificationsObj = {};
+      for (const [key, value] of medicationObj.emailNotifications.entries()) {
+        notificationsObj[key] = value;
+      }
+      medicationObj.emailNotifications = notificationsObj;
+    }
+    
+    res.status(201).json({ success: true, data: medicationObj });
   } catch (error) {
     console.error('Error creating medication:', error);
     console.error('Stack trace:', error.stack);
@@ -79,8 +105,24 @@ router.get('/', isAuthenticated, async (req, res) => {
   try {
     const medications = await Medication.find({ user: req.session.user._id })
       .sort({ createdAt: -1 }); // Sort by creation date, newest first
+    
+    // Convert Map to object for each medication (to handle in frontend)
+    const medicationsData = medications.map(medication => {
+      const medicationObj = medication.toObject();
+      
+      // If emailNotifications is a Map, convert it to a plain object
+      if (medicationObj.emailNotifications instanceof Map) {
+        const notificationsObj = {};
+        for (const [key, value] of medicationObj.emailNotifications.entries()) {
+          notificationsObj[key] = value;
+        }
+        medicationObj.emailNotifications = notificationsObj;
+      }
+      
+      return medicationObj;
+    });
 
-    res.status(200).json({ success: true, data: medications });
+    res.status(200).json({ success: true, data: medicationsData });
   } catch (error) {
     console.error('Error fetching medications:', error);
     res.status(500).json({ success: false, message: 'Error fetching medications', error: error.message });
@@ -99,7 +141,19 @@ router.get('/:id', isAuthenticated, async (req, res) => {
       return res.status(404).json({ success: false, message: 'Medication not found' });
     }
 
-    res.status(200).json({ success: true, data: medication });
+    // Convert to object for proper JSON serialization
+    const medicationObj = medication.toObject();
+    
+    // If emailNotifications is a Map, convert it to a plain object
+    if (medicationObj.emailNotifications instanceof Map) {
+      const notificationsObj = {};
+      for (const [key, value] of medicationObj.emailNotifications.entries()) {
+        notificationsObj[key] = value;
+      }
+      medicationObj.emailNotifications = notificationsObj;
+    }
+
+    res.status(200).json({ success: true, data: medicationObj });
   } catch (error) {
     console.error('Error fetching medication:', error);
     res.status(500).json({ success: false, message: 'Error fetching medication', error: error.message });
@@ -124,6 +178,45 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 
     // Ensure medication times is an array
     const timesArray = Array.isArray(medicationTimes) ? medicationTimes : [medicationTimes];
+    
+    // Get current medication
+    const currentMedication = await Medication.findOne({
+      _id: req.params.id,
+      user: req.session.user._id
+    });
+    
+    if (!currentMedication) {
+      return res.status(404).json({ success: false, message: 'Medication not found' });
+    }
+    
+    // Create email notifications object (not Map) for easier handling
+    const emailNotificationsObj = {};
+    
+    // Get current notifications
+    const currentNotifications = currentMedication.emailNotifications || {};
+    
+    // Either get from Map or object depending on how it's stored
+    const getCurrentNotification = (time) => {
+      if (currentNotifications instanceof Map && currentNotifications.has(time)) {
+        return currentNotifications.get(time);
+      } else if (currentNotifications[time]) {
+        return currentNotifications[time];
+      }
+      return null;
+    };
+    
+    // Create notifications object for each time
+    timesArray.forEach(time => {
+      const existing = getCurrentNotification(time);
+      if (existing) {
+        emailNotificationsObj[time] = existing;
+      } else {
+        emailNotificationsObj[time] = {
+          atTimeSent: false,
+          beforeSent: false
+        };
+      }
+    });
 
     const medication = await Medication.findOneAndUpdate(
       { _id: req.params.id, user: req.session.user._id },
@@ -139,7 +232,8 @@ router.put('/:id', isAuthenticated, async (req, res) => {
         reminderPreferences: {
           reminderAtTime: reminderAtTime === 'on' || reminderAtTime === '1' || reminderAtTime === true,
           reminderBefore: reminderBefore === 'on' || reminderBefore === '1' || reminderBefore === true
-        }
+        },
+        emailNotifications: emailNotificationsObj
       },
       { new: true }
     );
@@ -148,7 +242,19 @@ router.put('/:id', isAuthenticated, async (req, res) => {
       return res.status(404).json({ success: false, message: 'Medication not found' });
     }
 
-    res.status(200).json({ success: true, data: medication });
+    // Convert to object for proper JSON serialization
+    const medicationObj = medication.toObject();
+    
+    // If emailNotifications is still a Map, convert it to a plain object
+    if (medicationObj.emailNotifications instanceof Map) {
+      const notificationsObj = {};
+      for (const [key, value] of medicationObj.emailNotifications.entries()) {
+        notificationsObj[key] = value;
+      }
+      medicationObj.emailNotifications = notificationsObj;
+    }
+
+    res.status(200).json({ success: true, data: medicationObj });
   } catch (error) {
     console.error('Error updating medication:', error);
     res.status(500).json({ success: false, message: 'Error updating medication', error: error.message });

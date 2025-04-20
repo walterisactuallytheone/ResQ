@@ -51,6 +51,18 @@ const medicationSchema = new mongoose.Schema({
       default: true
     }
   },
+  emailNotifications: {
+    // Track email status for each medication time
+    // Format: { "08:00": { atTimeSent: true, atTimeSentAt: Date, beforeSent: true, beforeSentAt: Date } }
+    type: Map,
+    of: {
+      atTimeSent: { type: Boolean, default: false },
+      atTimeSentAt: Date,
+      beforeSent: { type: Boolean, default: false },
+      beforeSentAt: Date
+    },
+    default: {}
+  },
   createdAt: {
     type: Date,
     default: Date.now

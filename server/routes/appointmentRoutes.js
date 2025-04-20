@@ -29,10 +29,20 @@ router.post('/', isAuthenticated, async (req, res) => {
       location,
       notes,
       reminderDay,
-      reminderHour
+      reminderHour,
+      reminderAtTime
     } = req.body;
 
-    console.log('Parsed fields:', { doctorName, speciality, appointmentDate, appointmentTime, location });
+    console.log('Parsed fields:', { 
+      doctorName, 
+      speciality, 
+      appointmentDate, 
+      appointmentTime, 
+      location,
+      reminderDay,
+      reminderHour,
+      reminderAtTime
+    });
 
     // Validate required fields
     if (!doctorName || !speciality || !appointmentDate || !appointmentTime || !location) {
@@ -46,6 +56,17 @@ router.post('/', isAuthenticated, async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide all required fields' });
     }
 
+    // Handle checkbox values - convert any truthy values to true
+    const reminderDayValue = reminderDay === '1' || reminderDay === 'on' || reminderDay === 'true' || reminderDay === true;
+    const reminderHourValue = reminderHour === '1' || reminderHour === 'on' || reminderHour === 'true' || reminderHour === true;
+    const reminderAtTimeValue = reminderAtTime === '1' || reminderAtTime === 'on' || reminderAtTime === 'true' || reminderAtTime === true;
+    
+    console.log('Processed reminder preferences:', { 
+      reminderDay: reminderDayValue, 
+      reminderHour: reminderHourValue,
+      reminderAtTime: reminderAtTimeValue
+    });
+
     // Create new appointment
     const appointment = new Appointment({
       doctorName,
@@ -56,8 +77,14 @@ router.post('/', isAuthenticated, async (req, res) => {
       notes,
       user: req.session.user._id,
       reminderPreferences: {
-        reminderDay: reminderDay === 'on' || reminderDay === true,
-        reminderHour: reminderHour === 'on' || reminderHour === true
+        reminderDay: reminderDayValue,
+        reminderHour: reminderHourValue,
+        reminderAtTime: reminderAtTimeValue
+      },
+      emailNotifications: {
+        dayBefore: { sent: false },
+        hourBefore: { sent: false },
+        atTime: { sent: false }
       }
     });
 
@@ -79,7 +106,48 @@ router.get('/', isAuthenticated, async (req, res) => {
     const appointments = await Appointment.find({ user: req.session.user._id })
       .sort({ appointmentDate: 1, appointmentTime: 1 }); // Sort by date and time
 
-    res.status(200).json({ success: true, data: appointments });
+    // Ensure all appointments have emailNotifications and reminderPreferences
+    const processedAppointments = appointments.map(appointment => {
+      const appointmentObj = appointment.toObject();
+      
+      // Ensure reminderPreferences exists
+      if (!appointmentObj.reminderPreferences) {
+        appointmentObj.reminderPreferences = {
+          reminderDay: true,
+          reminderHour: true,
+          reminderAtTime: true
+        };
+      } else if (appointmentObj.reminderPreferences.reminderAtTime === undefined) {
+        // Add reminderAtTime if it doesn't exist
+        appointmentObj.reminderPreferences.reminderAtTime = true;
+      }
+      
+      // Ensure emailNotifications exists
+      if (!appointmentObj.emailNotifications) {
+        appointmentObj.emailNotifications = {
+          dayBefore: { sent: false },
+          hourBefore: { sent: false },
+          atTime: { sent: false }
+        };
+      } else {
+        // Make sure dayBefore and hourBefore exist
+        if (!appointmentObj.emailNotifications.dayBefore) {
+          appointmentObj.emailNotifications.dayBefore = { sent: false };
+        }
+        if (!appointmentObj.emailNotifications.hourBefore) {
+          appointmentObj.emailNotifications.hourBefore = { sent: false };
+        }
+        if (!appointmentObj.emailNotifications.atTime) {
+          appointmentObj.emailNotifications.atTime = { sent: false };
+        }
+      }
+      
+      return appointmentObj;
+    });
+
+    console.log(`Returning ${processedAppointments.length} appointments`);
+    
+    res.status(200).json({ success: true, data: processedAppointments });
   } catch (error) {
     console.error('Error fetching appointments:', error);
     res.status(500).json({ success: false, message: 'Error fetching appointments', error: error.message });
@@ -116,23 +184,81 @@ router.put('/:id', isAuthenticated, async (req, res) => {
       location,
       notes,
       reminderDay,
-      reminderHour
+      reminderHour,
+      reminderAtTime
     } = req.body;
+
+    console.log('Update appointment data:', { 
+      doctorName, 
+      speciality, 
+      appointmentDate, 
+      appointmentTime, 
+      location,
+      reminderDay,
+      reminderHour,
+      reminderAtTime
+    });
+
+    // Get the current appointment
+    const currentAppointment = await Appointment.findOne({
+      _id: req.params.id,
+      user: req.session.user._id
+    });
+
+    if (!currentAppointment) {
+      return res.status(404).json({ success: false, message: 'Appointment not found' });
+    }
+
+    // Handle checkbox values - convert any truthy values to true
+    const reminderDayValue = reminderDay === '1' || reminderDay === 'on' || reminderDay === 'true' || reminderDay === true;
+    const reminderHourValue = reminderHour === '1' || reminderHour === 'on' || reminderHour === 'true' || reminderHour === true;
+    const reminderAtTimeValue = reminderAtTime === '1' || reminderAtTime === 'on' || reminderAtTime === 'true' || reminderAtTime === true;
+    
+    console.log('Processed reminder preferences:', { 
+      reminderDay: reminderDayValue, 
+      reminderHour: reminderHourValue,
+      reminderAtTime: reminderAtTimeValue
+    });
+
+    // Create update object
+    const updateData = {
+      doctorName,
+      speciality,
+      appointmentDate,
+      appointmentTime,
+      location,
+      notes,
+      reminderPreferences: {
+        reminderDay: reminderDayValue,
+        reminderHour: reminderHourValue,
+        reminderAtTime: reminderAtTimeValue
+      }
+    };
+
+    // Reset email notifications if date or time changes
+    if (appointmentDate !== currentAppointment.appointmentDate.toISOString() || 
+        appointmentTime !== currentAppointment.appointmentTime) {
+      updateData.emailNotifications = {
+        dayBefore: { sent: false },
+        hourBefore: { sent: false },
+        atTime: { sent: false }
+      };
+      console.log('Reset email notifications due to date/time change');
+    } else if (!currentAppointment.emailNotifications || 
+              !currentAppointment.emailNotifications.dayBefore ||
+              !currentAppointment.emailNotifications.hourBefore ||
+              !currentAppointment.emailNotifications.atTime) {
+      updateData.emailNotifications = {
+        dayBefore: { sent: false },
+        hourBefore: { sent: false },
+        atTime: { sent: false }
+      };
+      console.log('Set default email notifications because they were missing');
+    }
 
     const appointment = await Appointment.findOneAndUpdate(
       { _id: req.params.id, user: req.session.user._id },
-      {
-        doctorName,
-        speciality,
-        appointmentDate,
-        appointmentTime,
-        location,
-        notes,
-        reminderPreferences: {
-          reminderDay: reminderDay === 'on' || reminderDay === true,
-          reminderHour: reminderHour === 'on' || reminderHour === true
-        }
-      },
+      updateData,
       { new: true }
     );
 

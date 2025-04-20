@@ -4,6 +4,47 @@
     <br>
     <br>
     
+    <!-- Custom CSS for badges -->
+    <style>
+        .badge {
+            display: inline-block;
+            padding: 0.35em 0.65em;
+            font-size: 0.9em;
+            font-weight: 600;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .bg-success {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+        .bg-warning {
+            background-color: #ffc107 !important;
+            color: #212529 !important;
+        }
+        .bg-danger {
+            background-color: #dc3545 !important;
+            color: white !important;
+        }
+        .bg-secondary {
+            background-color: #6c757d !important;
+            color: white !important;
+        }
+        .notification-status {
+            display: block;
+            clear: both;
+            margin: 15px 0;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+    
     <!--Appointment Page Start-->
     <section class="appoinment-page">
         <div class="container">
@@ -65,7 +106,7 @@
                                     <h4 class="mt-3 mb-3">Reminder Preferences</h4>
                                 </div>
                                 
-                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="col-xl-4 col-lg-4 col-md-4">
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" value="1" id="reminderDay" name="reminderDay" checked>
                                         <label class="form-check-label" for="reminderDay">
@@ -74,11 +115,20 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="col-xl-4 col-lg-4 col-md-4">
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" value="1" id="reminderHour" name="reminderHour" checked>
                                         <label class="form-check-label" for="reminderHour">
                                             Remind me 1 hour before
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-4 col-lg-4 col-md-4">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="1" id="reminderAtTime" name="reminderAtTime" checked>
+                                        <label class="form-check-label" for="reminderAtTime">
+                                            Remind me at appointment time
                                         </label>
                                     </div>
                                 </div>
@@ -107,18 +157,8 @@
                             </div>
                             
                             <!-- Example of how appointments will look (to be replaced with dynamic data) -->
-                            <div class="upcoming-appointment d-none">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Dr. Sarah Johnson</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Cardiologist</h6>
-                                        <p class="card-text"><i class="far fa-calendar-alt"></i> June 15, 2023</p>
-                                        <p class="card-text"><i class="far fa-clock"></i> 10:30 AM</p>
-                                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> City Hospital, Wing B</p>
-                                        <a href="#" class="card-link text-danger">Cancel</a>
-                                        <a href="#" class="card-link text-primary">Reschedule</a>
-                                    </div>
-                                </div>
+                            <div class="upcoming-appointment">
+                                <!-- Appointment cards will be loaded here dynamically -->
                             </div>
                         </div>
                     </div>
@@ -136,6 +176,9 @@
         const appointmentsContainer = document.querySelector('.upcoming-appointment');
         const noAppointmentsMessage = document.querySelector('.no-appointments-message');
         
+        // Load appointments when the page loads
+        loadAppointments();
+        
         // Function to format date for display
         function formatDate(dateString) {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -149,6 +192,76 @@
         
         // Function to create appointment card
         function createAppointmentCard(appointment) {
+            // Debug the entire appointment object
+            console.log('Processing appointment:', JSON.stringify(appointment, null, 2));
+            
+            // Check if email notifications were sent
+            const dayBeforeSent = appointment.emailNotifications && appointment.emailNotifications.dayBefore && appointment.emailNotifications.dayBefore.sent;
+            const hourBeforeSent = appointment.emailNotifications && appointment.emailNotifications.hourBefore && appointment.emailNotifications.hourBefore.sent;
+            const atTimeSent = appointment.emailNotifications && appointment.emailNotifications.atTime && appointment.emailNotifications.atTime.sent;
+            
+            console.log('Appointment email notification status:', { 
+                id: appointment._id,
+                dayBeforeSent: dayBeforeSent, 
+                hourBeforeSent: hourBeforeSent,
+                atTimeSent: atTimeSent,
+                reminderPrefs: appointment.reminderPreferences
+            });
+            
+            // Create notification status HTML
+            let notificationStatus = '';
+            
+            // Check if reminder preferences exist and are properly structured
+            if (!appointment.reminderPreferences) {
+                console.log('No reminder preferences found, creating default');
+                appointment.reminderPreferences = {
+                    reminderDay: true,
+                    reminderHour: true,
+                    reminderAtTime: true
+                };
+            }
+            
+            if (appointment.reminderPreferences && appointment.reminderPreferences.reminderDay) {
+                let dayStatus;
+                if (dayBeforeSent) {
+                    dayStatus = '<span class="badge bg-success" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">Day-before reminder sent</span>';
+                } else if (appointment.emailNotifications && appointment.emailNotifications.dayBefore && appointment.emailNotifications.dayBefore.error) {
+                    dayStatus = '<span class="badge bg-danger" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">Day-before reminder failed</span>';
+                } else {
+                    dayStatus = '<span class="badge bg-warning" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">Day-before reminder pending</span>';
+                }
+                notificationStatus += dayStatus;
+                console.log('Added day badge:', dayStatus);
+            }
+            
+            if (appointment.reminderPreferences && appointment.reminderPreferences.reminderHour) {
+                let hourStatus;
+                if (hourBeforeSent) {
+                    hourStatus = '<span class="badge bg-success" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">Hour-before reminder sent</span>';
+                } else if (appointment.emailNotifications && appointment.emailNotifications.hourBefore && appointment.emailNotifications.hourBefore.error) {
+                    hourStatus = '<span class="badge bg-danger" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">Hour-before reminder failed</span>';
+                } else {
+                    hourStatus = '<span class="badge bg-warning" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">Hour-before reminder pending</span>';
+                }
+                notificationStatus += hourStatus;
+                console.log('Added hour badge:', hourStatus);
+            }
+            
+            if (appointment.reminderPreferences && appointment.reminderPreferences.reminderAtTime) {
+                let atTimeStatus;
+                if (atTimeSent) {
+                    atTimeStatus = '<span class="badge bg-success" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">At-time reminder sent</span>';
+                } else if (appointment.emailNotifications && appointment.emailNotifications.atTime && appointment.emailNotifications.atTime.error) {
+                    atTimeStatus = '<span class="badge bg-danger" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">At-time reminder failed</span>';
+                } else {
+                    atTimeStatus = '<span class="badge bg-warning" style="font-size: 14px; padding: 5px 8px; margin-right: 5px; margin-bottom: 5px; display: inline-block;">At-time reminder pending</span>';
+                }
+                notificationStatus += atTimeStatus;
+                console.log('Added at-time badge:', atTimeStatus);
+            }
+            
+            console.log('Final notification status HTML:', notificationStatus);
+            
             return `
                 <div class="card mb-3" data-id="${appointment._id}">
                     <div class="card-body">
@@ -158,6 +271,10 @@
                         <p class="card-text"><i class="far fa-clock"></i> ${formatTime(appointment.appointmentTime)}</p>
                         <p class="card-text"><i class="fas fa-map-marker-alt"></i> ${appointment.location}</p>
                         ${appointment.notes ? `<p class="card-text text-muted small">${appointment.notes}</p>` : ''}
+                        <div class="notification-status my-3 py-2" style="display: block; clear: both; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding-top: 10px !important; padding-bottom: 10px !important;">
+                            <p class="small text-muted mb-2">Reminder Status:</p>
+                            ${notificationStatus || '<span class="badge bg-secondary" style="font-size: 14px; padding: 5px 8px; display: inline-block;">No reminder settings</span>'}
+                        </div>
                         <div class="d-flex justify-content-between mt-3">
                             <a href="#" class="card-link text-danger delete-appointment" data-id="${appointment._id}">Cancel</a>
                             <a href="#" class="card-link text-primary edit-appointment" data-id="${appointment._id}">Reschedule</a>
@@ -182,13 +299,14 @@
                 return response.json();
             })
             .then(data => {
-                console.log('Appointments data:', data);
+                console.log('Appointments data received:', data);
                 if (data.success && data.data.length > 0) {
                     // Clear existing content and hide no appointments message
                     appointmentsContainer.innerHTML = '';
                     noAppointmentsMessage.style.display = 'none';
                     appointmentsContainer.style.display = 'block';
-                    appointmentsContainer.classList.remove('d-none');
+                    
+                    console.log('Displaying', data.data.length, 'appointments');
                     
                     // Add each appointment
                     data.data.forEach(appointment => {
@@ -283,10 +401,24 @@
                     } else {
                         appointmentData[key] = value;
                     }
+                } else if (key === 'reminderDay' || key === 'reminderHour' || key === 'reminderAtTime') {
+                    // Ensure checkbox values are properly set as boolean true
+                    appointmentData[key] = true;
                 } else {
                     appointmentData[key] = value;
                 }
             });
+            
+            // Explicitly check if checkboxes are unchecked (they won't appear in formData if unchecked)
+            if (!formData.has('reminderDay')) {
+                appointmentData.reminderDay = false;
+            }
+            if (!formData.has('reminderHour')) {
+                appointmentData.reminderHour = false;
+            }
+            if (!formData.has('reminderAtTime')) {
+                appointmentData.reminderAtTime = false;
+            }
             
             console.log('Sending appointment data:', appointmentData);
             
@@ -330,8 +462,65 @@
                 resultDiv.innerHTML = `<div class="alert alert-danger">Error scheduling appointment: ${error.message}</div>`;
             });
         });
-        
-        // Load appointments when page loads
-        loadAppointments();
+    });
+</script>
+
+<!-- Script to verify and fix badges after page load -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait for everything to load
+        setTimeout(function() {
+            console.log('Checking if notification badges are visible...');
+            
+            // Get all badge elements
+            const badges = document.querySelectorAll('.badge');
+            console.log('Found ' + badges.length + ' badge elements');
+            
+            // Force badges to be visible and styled
+            badges.forEach(function(badge, index) {
+                badge.style.display = 'inline-block';
+                badge.style.padding = '5px 8px';
+                badge.style.fontSize = '14px';
+                badge.style.fontWeight = 'bold';
+                badge.style.lineHeight = '1';
+                badge.style.textAlign = 'center';
+                badge.style.whiteSpace = 'nowrap';
+                badge.style.verticalAlign = 'baseline';
+                badge.style.borderRadius = '6px';
+                badge.style.marginRight = '5px';
+                badge.style.marginBottom = '5px';
+                
+                // Set colors based on class
+                if (badge.classList.contains('bg-success')) {
+                    badge.style.backgroundColor = '#28a745';
+                    badge.style.color = 'white';
+                } else if (badge.classList.contains('bg-warning')) {
+                    badge.style.backgroundColor = '#ffc107';
+                    badge.style.color = '#212529';
+                } else if (badge.classList.contains('bg-danger')) {
+                    badge.style.backgroundColor = '#dc3545';
+                    badge.style.color = 'white';
+                } else if (badge.classList.contains('bg-secondary')) {
+                    badge.style.backgroundColor = '#6c757d';
+                    badge.style.color = 'white';
+                }
+                
+                console.log('Fixed badge ' + index + ':', badge.innerText);
+            });
+            
+            // Check notification status containers
+            const statusContainers = document.querySelectorAll('.notification-status');
+            console.log('Found ' + statusContainers.length + ' notification status containers');
+            
+            statusContainers.forEach(function(container, index) {
+                container.style.display = 'block';
+                container.style.clear = 'both';
+                container.style.margin = '15px 0';
+                container.style.padding = '10px 0';
+                container.style.borderTop = '1px solid #eee';
+                container.style.borderBottom = '1px solid #eee';
+                console.log('Fixed notification container ' + index);
+            });
+        }, 1000); // Check after 1 second
     });
 </script>

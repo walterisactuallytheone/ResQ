@@ -201,6 +201,45 @@
             // Format medication times for display
             const times = medication.medicationTimes.join(', ');
             
+            // Check email notification status for each time
+            let notificationStatusHTML = '';
+            
+            if (medication.emailNotifications) {
+                notificationStatusHTML += '<div class="email-status mt-2 mb-2">';
+                notificationStatusHTML += '<p class="mb-1 small text-muted">Email notification status:</p>';
+                
+                for (const timeStr of medication.medicationTimes) {
+                    // When MongoDB sends the data, Maps are converted to regular objects
+                    // Instead of using .get() method, we access it like a regular object
+                    const timeNotification = medication.emailNotifications[timeStr];
+                    let statusHTML = '';
+                    
+                    if (timeNotification) {
+                        if (medication.reminderPreferences.reminderBefore) {
+                            const beforeStatus = timeNotification.beforeSent
+                                ? '<span class="badge bg-success">15-min before reminder sent</span>'
+                                : '<span class="badge bg-warning">15-min before reminder pending</span>';
+                            statusHTML += beforeStatus;
+                        }
+                        
+                        if (medication.reminderPreferences.reminderAtTime) {
+                            const atTimeStatus = timeNotification.atTimeSent
+                                ? '<span class="badge bg-success ms-1">At-time reminder sent</span>'
+                                : '<span class="badge bg-warning ms-1">At-time reminder pending</span>';
+                            statusHTML += atTimeStatus;
+                        }
+                        
+                        if (statusHTML) {
+                            notificationStatusHTML += `<div class="time-status mb-1"><span class="time-label me-2">${timeStr}:</span>${statusHTML}</div>`;
+                        }
+                    } else {
+                        notificationStatusHTML += `<div class="time-status mb-1"><span class="time-label me-2">${timeStr}:</span><span class="badge bg-warning">No reminders sent yet</span></div>`;
+                    }
+                }
+                
+                notificationStatusHTML += '</div>';
+            }
+            
             return `
                 <div class="card mb-3" data-id="${medication._id}">
                     <div class="card-body">
@@ -208,6 +247,7 @@
                         <p class="card-text"><i class="fas fa-clock"></i> ${medication.frequency} at ${times}</p>
                         <p class="card-text"><i class="fas fa-calendar-alt"></i> Started on ${formatDate(medication.startDate)}</p>
                         ${medication.instructions ? `<p class="card-text text-muted small"><i class="fas fa-info-circle"></i> ${medication.instructions}</p>` : ''}
+                        ${notificationStatusHTML}
                         <div class="d-flex justify-content-between">
                             <a href="#" class="card-link text-primary edit-medication" data-id="${medication._id}">Edit</a>
                             <a href="#" class="card-link text-danger delete-medication" data-id="${medication._id}">Delete</a>
