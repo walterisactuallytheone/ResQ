@@ -199,7 +199,7 @@ ResQ/
 
 
   <p><strong>Raima Mitra</strong>
-  <br>Final Year BCA Student | Ful Stack Developer<br>Techno Main Salt Lake<br>
+  <br>Final Year BCA Student | Mern Stack Developer<br>Techno Main Salt Lake<br>
   <a href="https://www.linkedin.com/in/raima-mitra-921898278/" target="_blank">linkedIn Profile</a></p>
 
 
